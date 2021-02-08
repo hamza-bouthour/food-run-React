@@ -1,38 +1,51 @@
-.App {
-  text-align: center;
-}
+.jumbotron {
+  /* height: 500px; */
+  margin: 0;
+  font-family: "Hind Siliguri", sans-serif;
+  padding: 0;
+  padding-bottom: 0;
+  background-image: url(https://i.postimg.cc/7P74yMjm/jumbotron-image3.jpg);
+  background-size: cover;
+  background-repeat: no-repeat; }
+.signin-button {
+  position: absolute;
+  top: 0;
+  right: 0; }
+.btn-signup {
+  background-color: #22810f;
+  color: white; }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
+.btn-signin {
+  background-color: rgba(15, 15, 15, 0.3); }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
+.btn-signin:hover {
+  background-color: rgba(15, 15, 15, 0.7); }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.btn-signup:hover {
+  background-color: rgba(34, 129, 15, 0.5);
+  color: white; }
+  .no-margin {
+    margin: 0; }
+  
+  .add-margin-top {
+    margin-top: 200px; }
+  
+  .add-margin-bot {
+    margin-bottom: 100px; }
+.input-style {
+  height: 50px;
 }
+.custom-navbar-toggler-icon {
+  display: inline-block;
+  width: 1.5em;
+  height: 1.5em;
+  vertical-align: middle;
+  content: "";
+  background: no-repeat center center;
+  background-size: 100% 100%;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='white' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e"); }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+.custom-navbar-toggler {
+  border: 1px solid white; }
+  .fa-custom {
+    color: rgba(248, 246, 246, 0.9); }
