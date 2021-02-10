@@ -1,6 +1,6 @@
 import React, { Component }  from 'react';
 import { Nav, Navbar, NavbarBrand, NavbarToggler, Collapse, NavItem, Jumbotron } from 'reactstrap';
- import { NavLink } from 'react-router-dom';//
+import { NavLink, Link } from 'react-router-dom';
 
 class Header extends Component {
 
@@ -22,7 +22,7 @@ class Header extends Component {
     render() {
         return (
             <React.Fragment>
-                <Jumbotron fluid className="jumbotron p-0">
+                <Jumbotron fluid className="jumbotron p-0" style={{background: "black"}}>
                     <div className="container">
                         <div className="row">
                             <div class="signin-button mr-2 mt-2">
@@ -49,13 +49,17 @@ class Header extends Component {
                                 <Collapse isOpen={this.state.isNavOpen} navbar>
                                     <Nav navbar className=" navbar-dark">
                                         <NavItem className="mr-2">
-                                            <NavLink className="nav-link" to="home">
+                                        <Link to="/home">
+                                        <NavLink className="nav-link" to="/home">
                                                  Home
                                             </NavLink>
+                                        </Link>
+                                            
                                         </NavItem>
                                         <NavItem className="mr-2">
-                                            <NavLink className="nav-link" to="cart">
+                                            <NavLink className="nav-link" to="/cart">
                                                  Cart
+                                                 <span style={{color: "green"}}>({this.props.cartItems})</span>
                                             </NavLink>
                                         </NavItem>
                                         <NavItem className="mr-2">
@@ -64,7 +68,7 @@ class Header extends Component {
                                             </NavLink>
                                         </NavItem>
                                         <NavItem className="mr-2">
-                                            <NavLink className="nav-link" to="contact">
+                                            <NavLink className="nav-link" to="/contact">
                                                  Contact Us
                                             </NavLink>
                                         </NavItem>

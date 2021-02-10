@@ -4,9 +4,10 @@
   font-family: "Hind Siliguri", sans-serif;
   padding: 0;
   padding-bottom: 0;
-  background-image: url(https://i.postimg.cc/7P74yMjm/jumbotron-image3.jpg);
+  /* background-image: url(https://i.postimg.cc/7P74yMjm/jumbotron-image3.jpg);
   background-size: cover;
-  background-repeat: no-repeat; }
+  background-repeat: no-repeat;  */
+background-color: rgb(228, 23, 23);}
 .signin-button {
   position: absolute;
   top: 0;
@@ -47,5 +48,17 @@
 
 .custom-navbar-toggler {
   border: 1px solid white; }
-  .fa-custom {
-    color: rgba(248, 246, 246, 0.9); }
+.fa-custom {
+  color: rgba(248, 246, 246, 0.9); }
+.contact-description {
+  font-size: 30px;
+  font-weight: 600;
+  
+}
+.site-footer {
+  background-color: rgb(12, 12, 12);
+  margin-top: 35px;
+}
+.card-popular:hover {
+  border: solid 1px green;
+}
