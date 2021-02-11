@@ -22,11 +22,15 @@ class Main extends Component {
             productsData: PRODUCTSDATA,
             cartItems: 0,
             cartProducts: [],
-            pickedDish: 0
+            pickedDish: 0,
+            total : 0
+            
 
             // 
         }
         this.updateCart = this.updateCart.bind(this);
+        this.removeItem = this.removeItem.bind(this);
+        this.removeAll = this.removeAll.bind(this);
     }
     updateCart(e) {
         console.log(e.target.value)
@@ -36,28 +40,47 @@ class Main extends Component {
             cartItems: this.state.cartItems + 1
         }))
     }
-    // updateDish(event) {
-    //     console.log(event.target.value)
-    //     this.setState({
-    //         pickedDish: event.target.value
-    //     })
+    removeAll() {
+        this.setState({
+            cartProducts: [],
+            cartItems: 0
+        })
+    }
+    // sendTotal() {
+    //     let total = 0
+    //     for (let i=0; i<this.state.cartProducts.length; i++) {
+    //         total = total + this.state.productsData[this.state.cartProducts[i]]
+    //         console.log(this.state.productsData[this.state.cartProducts[i]])
+    //         // return total
+    //         this.setState({
+    //             total: 5
+    //         })
+    //     }
     // }
+    removeItem(event) {
+      const asba = this.state.cartProducts
+      for (let i=0; i<asba.length; i++) {
+          if (asba[i] === event.target.value) {
+              console.log(asba.splice(i, 1))
+              console.log(asba)
+              this.setState({
+                cartProducts: asba,
+                cartItems: this.state.cartItems - 1
+            })
+          }
+          
+      }
+        
+    }
     render() {
         
         const DishWidhId =({match}) => {
-        // const pop = this.state.popularData.filter(popular => popular.id === +match.params.popularId)[0]
-        // this.setState({
-        //     pickedDish: this.state.popularData.filter(popular => popular.id === +match.params.popularId)[0]
-        // })
-        // <Cart popular={this.state.popularData.filter(popular => popular.id === +match.params.popularId)[0]} />
             return ( 
                 <div>
                     <DishInfo popular={this.state.popularData.filter(popular => popular.id === +match.params.popularId)[0]}
                                 onclick={this.updateCart}
-                                index={this.state.cartProducts}
-                                
+                                index={this.state.cartProducts}     
                     />
-                    {/* <Cart productsData={this.state.productsData} cartProducts={this.state.cartProducts} popular={this.state.popularData.filter(popular => popular.id === +match.params.popularId)[0]} index={this.state.cartProducts}/> */}
                  </div>
             )
         }
@@ -69,7 +92,7 @@ class Main extends Component {
                     <Route exact path='/home' render={() =><Home onClick={this.updateDish} popularData={this.state.popularData} cheapestData={this.state.cheapestData} quickestData={this.state.quickestData} dish={this.state.popularData[0]}/>} />
                     <Route  exact path='/home/:popularId' component={DishWidhId}/>
                     <Route path='/contact' component={Contact}/>
-                    <Route exact path='/cart' render={() =><Cart index={this.state.cartProducts} cartProducts={this.state.cartProducts} productsData={this.state.productsData}/>}/>
+                    <Route exact path='/cart' render={() =><Cart removeAll={this.removeAll} cartProducts={this.state.cartProducts} productsData={this.state.productsData} remove={this.removeItem} cartItems={this.state.cartItems}/>}/>
                     <Redirect to='/home'/> 
                 </Switch>
                 <Footer />

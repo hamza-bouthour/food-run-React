@@ -62,3 +62,8 @@ background-color: rgb(228, 23, 23);}
 .card-popular:hover {
   border: solid 1px green;
 }
+/* .footerStabilizer{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+} */
