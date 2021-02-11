@@ -67,7 +67,8 @@ class Main extends Component {
                 <div>
                     <DishInfo popular={this.state.popularData.filter(popular => popular.id === +match.params.popularId)[0]}
                                 onclick={this.updateCart}
-                                index={this.state.cartProducts}     
+                                index={this.state.cartProducts}
+                                cartItems={this.state.cartItems}     
                     />
                  </div>
             )

@@ -12,22 +12,22 @@ class Cart extends Component {
             total : 0,
             color: true
         }
-    this.changecolor = this.changecolor.bind(this)
+    // this.changecolor = this.changecolor.bind(this)
     }
 
-changecolor(e) {
-    this.setState({
-        color: !this.state.color
-    })
-}
+// changecolor(e) {
+//     this.setState({
+//         color: !this.state.color
+//     })
+// }
 render() {
-    let btnColor = this.state.color ? "whity" : "blacky"
+    // let btnColor = this.state.color ? "whity" : "blacky"
     let total = 0
     const renderProducts =  
     this.props.cartProducts.map((pro) => {
         total = total + this.props.productsData[pro].price
         return (
-            <Card key={this.props.productsData[pro].name} className={btnColor} onClick={this.changecolor}>
+            <Card key={this.props.productsData[pro].name} className="col-4 col-md-3 mt-3 p-0">
                 <CardImg top width="100%" src={this.props.productsData[pro].img} alt="Card image cap" />
                 <CardBody>
                     <CardTitle tag="h5">{this.props.productsData[pro].name}</CardTitle>

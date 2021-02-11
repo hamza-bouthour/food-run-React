@@ -7,7 +7,7 @@ import { POPULARDATA } from '../shared/popularData';
 function Popular(props) { 
     return (           
         <>
-            <Card name={POPULARDATA.indexOf(props.popular)} className="col-md-5 col-12 card-popular mx-md-4 my-md-3" onClick={props.onClick}>
+            <Card name={POPULARDATA.indexOf(props.popular)} className="col-md-5 col-12 card-popular mx-md-4 my-md-3 p-1" onClick={props.onClick}>
                 <Link to={`/home/${props.popular.id}`}>
                 <CardImg top width="100%" src={props.popular.img} alt="Card image cap" />
                 </Link>

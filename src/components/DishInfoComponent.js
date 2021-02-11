@@ -16,7 +16,7 @@ function DishInfo(props) {
                 // console.log(pro)
                 return (
                     <>
-                        <Card key={pro.name} className="col-md-3 col-4 p-1">
+                        <Card key={pro.name} className="col-md-3 col-4 p-0">
                             <CardImg top width="100%" src={pro.img} alt="Card image cap" />
                             <CardBody>
                                 <CardTitle tag="h5">{pro.name}</CardTitle>
@@ -46,8 +46,13 @@ function DishInfo(props) {
                             <small>Cost: </small><span className="text-success"><b>{props.popular.cost}</b><i className="fas fa-dollar-sign"></i></span>
                         </div>
                         <hr />
-                        <div>
-                            <h4>An easy Chicken Cordon Bleu which is quick to prepare, and baked rather than fried. All the flavour, all the crunch, a beautiful golden crumb, and it’s better for you!</h4>
+                        <div className="row">
+                            <h4 className="col-12">An easy Chicken Cordon Bleu which is quick to prepare, and baked rather than fried. All the flavour, all the crunch, a beautiful golden crumb, and it’s better for you!</h4>
+                            <div className="mt-3 col-12 row">
+                            <h6 className="my-auto col-1">Cart:</h6>
+                             <h5 style={{color: "green"}} className="my-auto col-4">{props.cartItems}</h5>
+                            </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -67,6 +72,7 @@ function DishInfo(props) {
                         </div>
                         <div className="row p-4">
                             {dishDirections}
+                            
                         </div>
                     </div>
                         
