@@ -23,9 +23,10 @@ function Home(props) {
     })
     
         return (
-            <div className="container">
+            <div>
+                   <div className="container container-contour mb-5">
                 <h2>Most popular</h2>
-                <div className="row mt-3 mb-5">
+                <div className="row mt-3 mb-5 p-3">
                     {popularList}
                 </div>
                 <h2>Cheapest</h2>
@@ -38,6 +39,8 @@ function Home(props) {
                 </div>
                
             </div>
+            </div>
+         
         )
 }
 

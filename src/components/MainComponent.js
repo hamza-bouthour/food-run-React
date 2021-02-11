@@ -35,7 +35,7 @@ class Main extends Component {
     }
     updateCart(e) {
         console.log(e.target.className)
-        e.target.style.color = 'red'
+        e.target.style.color = 'green'
         this.setState(prevState => ({
             
             cartProducts: [e.target.value, ...prevState.cartProducts],
@@ -80,6 +80,9 @@ class Main extends Component {
                 <Switch>
                     <Route exact path='/home' render={() =><Home onClick={this.updateDish} popularData={this.state.popularData} cheapestData={this.state.cheapestData} quickestData={this.state.quickestData} dish={this.state.popularData[0]}/>} />
                     <Route  exact path='/home/:popularId' component={DishWidhId}/>
+                    <Route  exact path='/cordon' render={() => <DishInfo popular={this.state.popularData[0]}   onclick={this.updateCart}index={this.state.cartProducts}cartItems={this.state.cartItems} />}/>
+                    <Route  exact path='/salmon' render={() => <DishInfo popular={this.state.popularData[1]}   onclick={this.updateCart}index={this.state.cartProducts}cartItems={this.state.cartItems} />}/>
+                    <Route  exact path='/spaghetti' render={() => <DishInfo popular={this.state.popularData[2]}   onclick={this.updateCart}index={this.state.cartProducts}cartItems={this.state.cartItems} />}/>
                     <Route path='/contact' component={Contact}/>
                     <Route exact path='/cart' render={() =><Cart removeAll={this.removeAll} cartProducts={this.state.cartProducts} productsData={this.state.productsData} remove={this.removeItem} cartItems={this.state.cartItems}/>}/>
                     <Redirect to='/home'/> 

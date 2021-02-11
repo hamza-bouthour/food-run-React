@@ -1,29 +1,36 @@
-.jumbotron {
+.jumbotron-1 {
   /* height: 500px; */
   margin: 0;
   font-family: "Hind Siliguri", sans-serif;
   padding: 0;
   padding-bottom: 0;
-  /* background-image: url(https://i.postimg.cc/7P74yMjm/jumbotron-image3.jpg);
+  /* background-image: url(https://i.postimg.cc/y8pVZ3tB/delete-1.jpg);
   background-size: cover;
-  background-repeat: no-repeat;  */
-background-color: rgb(228, 23, 23);}
+  background-repeat: no-repeat; */
+
+  background: #000046;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #1CB5E0, #000046);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #1CB5E0, #000046); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  
+  
+  
+}
 .signin-button {
   position: absolute;
   top: 0;
   right: 0; }
 .btn-signup {
-  background-color: #22810f;
+  background-color: #0202aa;
   color: white; }
 
-.btn-signin {
-  background-color: rgba(15, 15, 15, 0.3); }
+/* .btn-signin {
+  background-color: #000046; } */
 
 .btn-signin:hover {
-  background-color: rgba(15, 15, 15, 0.7); }
+  background-color: #1CB5E0; }
 
 .btn-signup:hover {
-  background-color: rgba(34, 129, 15, 0.5);
+  background-color: #1CB5E0;
   color: white; }
   .no-margin {
     margin: 0; }
@@ -56,11 +63,18 @@ background-color: rgb(228, 23, 23);}
   
 }
 .site-footer {
-  background-color: rgb(12, 12, 12);
-  margin-top: 35px;
+  background: #000046;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #1CB5E0, #000046);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #1CB5E0, #000046); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  margin-top: 105px;
+
+  
 }
 .card-popular:hover {
-  border: solid 1px green;
+  border: solid 1px #1CB5E0;
+}
+.card-popular {
+  width: 150px;
 }
 /* .footerStabilizer{
   position: absolute;
@@ -72,6 +86,16 @@ background-color: rgb(228, 23, 23);}
   background: none;
   color: #0453ff;
 }
-.container-dish {
+/* .container-dish {
   background: rgb(250, 177, 177);
+} */
+.product-button-add {
+  background-color: red;
+}
+.container-contour {
+  
+  border-left: solid 1px #1CB5E0;
+}
+.addMinHeight {
+  min-height: 40vh;
 }

@@ -22,7 +22,7 @@ class Header extends Component {
     render() {
         return (
             <React.Fragment>
-                <Jumbotron fluid className="jumbotron p-0" style={{background: "black"}}>
+                <Jumbotron fluid className="jumbotron-1 p-0">
                     <div className="container">
                         <div className="row">
                             <div class="signin-button mr-2 mt-2">
@@ -40,7 +40,7 @@ class Header extends Component {
                             <input className="col-8 form-control no-border-right" type="text" id="searchInput"  placeholder="Look up products for"/>           
                             <button  className="col-2 col-md-1 form-control no-border-left" type="submit"><i className="fa fa-search"></i></button>                  
                         </form>
-                
+                    
                     </div>
                     <div className="container mt-5">
                             <Navbar dark expand="md" className="add-margin-top">
@@ -59,7 +59,7 @@ class Header extends Component {
                                         <NavItem className="mr-2">
                                             <NavLink className="nav-link" to="/cart">
                                                  Cart
-                                                 <span style={{color: "green"}}>({this.props.cartItems})</span>
+                                                 <span>({this.props.cartItems})</span>
                                             </NavLink>
                                         </NavItem>
                                         <NavItem className="mr-2">
