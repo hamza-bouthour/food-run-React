@@ -23,17 +23,19 @@ class Main extends Component {
             cartItems: 0,
             cartProducts: [],
             pickedDish: 0,
-            total : 0
-            
-
-            // 
+            total : 0,
+            button: {
+                enabled: true,
+                text: 'add'
+            }
         }
         this.updateCart = this.updateCart.bind(this);
         this.removeItem = this.removeItem.bind(this);
         this.removeAll = this.removeAll.bind(this);
     }
     updateCart(e) {
-        console.log(e.target.value)
+        console.log(e.target.className)
+        e.target.style.color = 'red'
         this.setState(prevState => ({
             
             cartProducts: [e.target.value, ...prevState.cartProducts],
@@ -46,17 +48,6 @@ class Main extends Component {
             cartItems: 0
         })
     }
-    // sendTotal() {
-    //     let total = 0
-    //     for (let i=0; i<this.state.cartProducts.length; i++) {
-    //         total = total + this.state.productsData[this.state.cartProducts[i]]
-    //         console.log(this.state.productsData[this.state.cartProducts[i]])
-    //         // return total
-    //         this.setState({
-    //             total: 5
-    //         })
-    //     }
-    // }
     removeItem(event) {
       const asba = this.state.cartProducts
       for (let i=0; i<asba.length; i++) {
@@ -68,12 +59,9 @@ class Main extends Component {
                 cartItems: this.state.cartItems - 1
             })
           }
-          
       }
-        
     }
     render() {
-        
         const DishWidhId =({match}) => {
             return ( 
                 <div>

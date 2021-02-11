@@ -9,19 +9,25 @@ class Cart extends Component {
     constructor(props) {
         super(props) 
         this.state = {
-            total : 0
+            total : 0,
+            color: true
         }
+    this.changecolor = this.changecolor.bind(this)
     }
 
-
+changecolor(e) {
+    this.setState({
+        color: !this.state.color
+    })
+}
 render() {
-
+    let btnColor = this.state.color ? "whity" : "blacky"
     let total = 0
     const renderProducts =  
     this.props.cartProducts.map((pro) => {
         total = total + this.props.productsData[pro].price
         return (
-            <Card key={this.props.productsData[pro].name} className="col-6 col-md-2 p-1 mr-md-2 mt-1">
+            <Card key={this.props.productsData[pro].name} className={btnColor} onClick={this.changecolor}>
                 <CardImg top width="100%" src={this.props.productsData[pro].img} alt="Card image cap" />
                 <CardBody>
                     <CardTitle tag="h5">{this.props.productsData[pro].name}</CardTitle>
@@ -35,18 +41,29 @@ render() {
     return (
         <div className="container container-fluid">
             <div className="row">
-                <h2>Your cart</h2>
+                <h2 className="col-4">Your cart</h2>
+                <div className="offset-md-4 offset-2 my-auto">
+                    <button onClick={this.props.removeAll} className="cart-buttons"><h5>Remove all</h5></button>
+                </div>
+                <div className="cart-buttons my-auto ml-2">
+                    <button onClick={this.props.removeAll} className="cart-buttons"><h5>Home</h5></button>
+                </div>
+            
             </div>
             <div className="row mt-3">
-                    <div className="col-md-3 col-6 row">
-                        <h3 className="col-4">Items</h3>
-                        <h2 className="col-4">{this.props.cartItems}</h2>
+                    <div className="col-md-2 col-4 row">
+                        <h6 className="col-4 my-auto">Items:</h6>
+                        <h5 className="col-4 my-auto ">{this.props.cartItems}</h5>
                     </div>
-                    <div className="col-md-3 col-6 row">
-                        <h3 className="col-4">total</h3>
-                        <h2 className="col-4">{total.toFixed(2)}</h2>
+                    <div className="col-md-2 col-4 row">
+                        <h6 className="col-4 my-auto">Total:</h6>
+                        <h5 className="col-4 my-auto">{total.toFixed(2)}</h5>
                     </div>
-                <Button onClick={this.props.removeAll} className="col-4 col-md-2">Remove all</Button>
+                    {/* <div className="col-4 col-md-2 cart-buttons my-auto p-0">
+                        <button onClick={this.props.removeAll} className="cart-buttons"><h5>Remove all</h5></button>
+                    </div> */}
+               
+                    
             </div>
             
             <div className="row">

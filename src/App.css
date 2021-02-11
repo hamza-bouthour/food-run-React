@@ -67,3 +67,17 @@ background-color: rgb(228, 23, 23);}
   bottom: 0;
   width: 100%;
 } */
+.cart-buttons {
+  border: none;
+  background: none;
+  color: #0453ff;
+}
+.container-dish {
+  background: rgb(250, 177, 177);
+}
+.blacky {
+  background: black;
+}
+.whity {
+  background: white;
+}
