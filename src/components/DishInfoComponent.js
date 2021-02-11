@@ -37,7 +37,7 @@ function DishInfo(props) {
         })
         
         return (           
-            <div key={props.popular.id} className="container">
+            <div key={props.popular.id} className="container mt-4">
                 <div className="row">
                     <img className="col-md-6 col-12" src={props.popular.img} alt="Card image cap" />
                     <div className="col-md-6 col-12 row">
@@ -63,7 +63,7 @@ function DishInfo(props) {
                                 </div>
                             </div>
                             <Link to="/cart" className="mt-3 col-12">
-                                <div className="row col-3 p-2 ml-1">   
+                                <div className="row col-4 p-2 ml-1">   
                                     <img src="https://i.postimg.cc/qRsTwppM/shopping-bag.gif" style={{width: '50px'}} className="mx-0"></img>
                                     <h4 style={{color: "green"}} className="my-auto col-4 mx-0">{props.cartItems}</h4>
                                 </div>

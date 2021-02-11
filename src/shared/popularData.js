@@ -27,7 +27,7 @@ export const POPULARDATA = [
         cost: 7,
         time: 60,
         img: 'https://i.postimg.cc/s2HZrrPL/Webp-net-resizeimage.jpg',
-        description: "An easy Chicken Cordon Bleu which is quick to prepare, and baked rather than fried. All the flavour, all the crunch, a beautiful golden crumb, and it’s better for you!",
+        description: "tender garlic butter baked salmon with crispy roast potatoes, asparagus and a delicious garlic butter sauce! all baked on a sheet pan for an easy dinner.",
         productsId: [
             { img: 'https://i.postimg.cc/Jtw4Pm4j/mustard.jpg', price: 1.97,name: "Mustard", id: "mustardProductId" },
             { img: 'https://i.postimg.cc/mr41T347/salt.png', price: 3.87,name: "Salt",id: 'saltProductId'},
@@ -49,7 +49,7 @@ export const POPULARDATA = [
         cost: 6,
         time: 20,
         img: 'https://i.postimg.cc/zGcJDXMT/Espaguetis-carbonara.jpg',
-        description: "An easy Chicken Cordon Bleu which is quick to prepare, and baked rather than fried. All the flavour, all the crunch, a beautiful golden crumb, and it’s better for you!",
+        description: "Humble ingredients—eggs, noodles, cheese, and pork—combine to create glossy, glorious pasta carbonara. It's the no-food-in-the-house dinner of our dreams.",
         productsId: [
             { img: 'https://i.postimg.cc/PxgmZjR7/eggs.jpg',price: 3.67, name: "Organic eggs", id: "eggsProductId"},
             { img: 'https://i.postimg.cc/mr41T347/salt.png', price: 3.87,name: "Salt",id: 'saltProductId'},
@@ -72,7 +72,7 @@ export const POPULARDATA = [
         cost: 8,
         time: 110,
         img: 'https://i.postimg.cc/QMxt6y7d/garlic-chicekn.jpg',
-        description: "This entree is easy and delicious! It's one of my husband's favorites! Try to use the largest chicken breasts you can find so you'll be able to roll them easier.",
+        description: "Sprinkle chicken breasts with garlic powder, onion powder and seasoning salt - then sautee and enjoy. Couldn't be easier! Great recipe for quick and easy meal, even for the pickiest eater!",
         productsId: [
             { img: 'https://i.postimg.cc/jdJFGqTD/garlic.png', price: 2.45, name: "Garlic", id: "garlicProductId"},
             { img: 'https://i.postimg.cc/jdJDN3dz/chicken.jpg', price: 5.94,name: "Boneless Chicken",id: 'bonelessChickenProductId'},

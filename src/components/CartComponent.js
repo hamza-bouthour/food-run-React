@@ -52,11 +52,11 @@ render() {
             
             </div>
             <div className="row mt-3">
-                    <div className="col-md-2 col-4 row">
+                    <div className="col-md-2 col-6 row">
                         <h6 className="col-4 my-auto">Items:</h6>
                         <h5 className="col-4 my-auto ">{this.props.cartItems}</h5>
                     </div>
-                    <div className="col-md-2 col-4 row">
+                    <div className="col-md-2 col-6 row">
                         <h6 className="col-4 my-auto">Total:</h6>
                         <h5 className="col-4 my-auto">{total.toFixed(2)}</h5>
                     </div>
