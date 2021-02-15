@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import {
-    Card, CardImg, CardText, CardBody,
+    Card, CardImg, CardText, CardBody,Breadcrumb, BreadcrumbItem,
     CardTitle, Button } from 'reactstrap';
-import Cart from './CartComponent'
+
+
 import { NavLink, Link } from 'react-router-dom';
 
 function DishInfo(props) { 
@@ -38,6 +39,15 @@ function DishInfo(props) {
         
         return (           
             <div key={props.popular.id} className="container mt-4">
+             <div className="row">
+                <div className="col">
+                    <Breadcrumb>
+                        <BreadcrumbItem><Link to="/home">Home</Link></BreadcrumbItem>
+                        <BreadcrumbItem active>{props.popular.name}</BreadcrumbItem>
+                    </Breadcrumb>
+                    <hr />
+                </div>
+            </div>
                 <div className="row">
                     <img className="col-md-6 col-12" src={props.popular.img} alt="Card image cap" />
                     <div className="col-md-6 col-12 row">

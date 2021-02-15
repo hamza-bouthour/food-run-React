@@ -44,7 +44,7 @@ render() {
     return (
          
         <div className="container container-fluid addMinHeight">
-           <div className="row custom-breadcrumbs">
+           <div className="row">
                 <div className="col">
                     <Breadcrumb>
                         <BreadcrumbItem><Link to="/home">Home</Link></BreadcrumbItem>
