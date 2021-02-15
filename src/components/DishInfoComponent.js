@@ -75,7 +75,7 @@ function DishInfo(props) {
                 </div>
                 <hr />
                 <div className="row">
-                    <div className="containter col-md-6">
+                    <div className="containter col-md-6 p-4">
                         <div className="row">
                             <h2>What you need</h2>
                         </div>
@@ -83,7 +83,7 @@ function DishInfo(props) {
                             {dishProduct}
                         </div>
                     </div>
-                    <div className="containter col-md-6">
+                    <div className="containter col-md-6 p-4">
                         <div className="row">
                             <h2>Directions</h2>
                         </div>

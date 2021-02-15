@@ -4,6 +4,8 @@ import {
     Card, CardImg, CardText, CardBody,
     CardTitle, Button } from 'reactstrap';
     import { NavLink, Link } from 'react-router-dom';
+    import { Breadcrumb, BreadcrumbItem,
+         Row, Label, Col } from 'reactstrap';
 
 
 class Cart extends Component {
@@ -28,7 +30,7 @@ render() {
     this.props.cartProducts.map((pro) => {
         total = total + this.props.productsData[pro].price
         return (
-            <Card key={this.props.productsData[pro].name} className="col-4 col-md-3 mt-3 p-1 card-popular my-md-3">
+            <Card key={this.props.productsData[pro].name} className="col-4 col-md-2 mt-3 p-1 card-popular my-md-3">
                 <CardImg top width="100%" src={this.props.productsData[pro].img} alt="Card image cap" />
                 <CardBody className="p-0 p-2">
                     <CardTitle tag="h5" className="m-0">{this.props.productsData[pro].name}</CardTitle>
@@ -40,7 +42,17 @@ render() {
         )
     })
     return (
+         
         <div className="container container-fluid addMinHeight">
+           <div className="row custom-breadcrumbs">
+                <div className="col">
+                    <Breadcrumb>
+                        <BreadcrumbItem><Link to="/home">Home</Link></BreadcrumbItem>
+                        <BreadcrumbItem active>Cart</BreadcrumbItem>
+                    </Breadcrumb>
+                    <hr />
+                </div>
+            </div>
             <div className="row">
                 <h2 className="col-4">Your cart</h2>
                 <div className="offset-md-4 offset-2 my-auto">
@@ -51,7 +63,7 @@ render() {
                 </div>
             
             </div>
-            <div className="row mt-3">
+            <div className="row mt-3 p-3">
                     <div className="col-md-2 col-6 row">
                         <h6 className="col-4 my-auto">Items:</h6>
                         <h5 className="col-4 my-auto ">{this.props.cartItems}</h5>

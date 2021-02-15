@@ -23,22 +23,24 @@ function Home(props) {
     })
     
         return (
-            <div>
-                   <div className="container container-contour mb-5">
-                <h2>Most popular</h2>
-                <div className="row mt-3 mb-5 p-3">
-                    {popularList}
+            <div>         
+                <div className="container container-contour mb-5">
+                    <div className="mt-4 mb-4">
+                        <h1>Welcome {props.userName}!</h1>
+                    </div>
+                    <h2>Most popular</h2>
+                    <div className="row mt-3 mb-5 p-3">
+                        {popularList}
+                    </div>
+                    <h2>Cheapest</h2>
+                    <div className="row mt-3 mb-5">
+                        {cheapestList}
+                    </div>
+                    <h2>Quickest</h2>
+                    <div className="row mt-3 mb-5">
+                        {quickestList}
+                    </div>         
                 </div>
-                <h2>Cheapest</h2>
-                <div className="row mt-3 mb-5">
-                    {cheapestList}
-                </div>
-                <h2>Quickest</h2>
-                <div className="row mt-3 mb-5">
-                    {quickestList}
-                </div>
-               
-            </div>
             </div>
          
         )

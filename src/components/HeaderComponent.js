@@ -1,6 +1,15 @@
 import React, { Component }  from 'react';
-import { Nav, Navbar, NavbarBrand, NavbarToggler, Collapse, NavItem, Jumbotron } from 'reactstrap';
+import { Nav, Navbar, NavbarBrand, NavbarToggler, Collapse, NavItem, Jumbotron, Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
 import { NavLink, Link } from 'react-router-dom';
+import { Control, LocalForm, Errors } from 'react-redux-form';
+import { Breadcrumb, BreadcrumbItem,
+    Button, Row, Label, Col } from 'reactstrap';
+
+const required = val => val && val.length;
+const maxLength = len => val => !val || (val.length <= len);
+const minLength = len => val => val && (val.length >= len);
+const isNumber = val => !isNaN(+val);
+const validEmail = val => /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(val);
 
 class Header extends Component {
 
@@ -8,14 +17,21 @@ class Header extends Component {
         super(props);
 
         this.toggleNav = this.toggleNav.bind(this);
+        this.toggleModal = this.toggleModal.bind(this);
         this.state = {
-          isNavOpen: false
+          isNavOpen: false,
+          isModalOpen: false
         };
     }
 
     toggleNav() {
         this.setState({
             isNavOpen: !this.state.isNavOpen
+        });
+    }
+    toggleModal() {
+        this.setState({
+            isModalOpen: !this.state.isModalOpen
         });
     }
 
@@ -26,13 +42,84 @@ class Header extends Component {
                     <div className="container">
                         <div className="row">
                             <div class="signin-button mr-2 mt-2">
-                                <button class="btn text-white btn-signin" data-target="#signinModal" data-toggle="modal"><strong>Sign-in</strong></button>
+                            <Link to='/account'>
+
                                 <button class="btn btn-signup" data-target="#signupModal" data-toggle="modal"><strong>Sign-up</strong></button>
+                            </Link>
+                                <button onClick={this.toggleModal} class="btn text-white btn-signin" data-target="#signinModal" data-toggle="modal"><strong>Sign-in</strong></button>
+                            </div>
+                            <div>
+                            <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
+                                <ModalBody> 
+
+                                        <LocalForm>
+                                            <Row className="form-group">
+                                                <Label htmlFor="email" md={2}>Email</Label>
+                                                <Col md={10}>
+                                                    <Control.text model=".email" id="email" name="email"
+                                                        placeholder="Email"
+                                                        className="form-control"
+                                                        validators={{
+                                                            required,
+                                                            validEmail
+                                                        }}
+                                                    />
+                                                    <Errors
+                                                        className="text-danger"
+                                                        model=".email"
+                                                        show="touched"
+                                                        component="div"
+                                                        messages={{
+                                                            required: 'Required',
+                                                            validEmail: 'Invalid email address'
+                                                        }}
+                                                    />
+                                                </Col>
+                                            </Row>
+                                            <Row className="form-group">
+                                            <Label htmlFor="password" md={2}>Passowrd</Label>
+                                                <Col md={10}>
+                                                <Control.text model=".password" id="password" name="password"
+                                                className="form-control"
+                                                // validators={{
+                                                //     required,
+                                                //     validEmail
+                                                // }}
+                                                />
+                                                <Errors
+                                                    className="text-danger"
+                                                    model=".passowrd"
+                                                    show="touched"
+                                                    component="div"
+                                                    messages={{
+                                                        required: 'Required',
+                                                        validEmail: 'Invalid email address'
+                                                    }}
+                                                />
+                                                </Col>
+                                            </Row>
+                                            <Row className="form-group">
+                                                <Col className="col-3 col-md-2 offset-md-2" >
+                                                    <Button type="submit" color="primary" disabled={false}>
+                                                        Submit
+                                                    </Button>
+                                                </Col>                           
+                                                <Col md={{size: 2}} sm={2} className="col-2 col-md-2">
+                                                    <Link to='/home'>
+                                                        <Button type="submit" color="primary" disabled={false} onClick={this.toggleModal}>
+                                                            Home
+                                                        </Button>
+                                                    </Link>
+                                                </Col>                           
+                                            </Row>
+                                        </LocalForm>
+                                    </ModalBody>    
+                                </Modal>        
                             </div>
                         </div>
-                        <div class="row justify-content-center mt-5">
-                            <a href="index.html" class="col-2 col-md-1"><i class="fa-custom fa fa-4x fa-shopping-cart"></i></a>
-                            <h1 class="col-md-4 col-9 text-white my-auto">Food Run</h1>
+                        <div class="row mx-auto mt-5">
+                            <a href="index.html" class="col-2 col-md-1 offset-2 offset-md-4"><i class="fa-custom fa fa-3x fa-shopping-cart"></i></a>
+                            <h3 class="col-md-4 col-6 text-white my-auto">Food Run</h3>
                         </div>
                     </div>
                     <div className="container">
@@ -63,13 +150,15 @@ class Header extends Component {
                                             </NavLink>
                                         </NavItem>
                                         <NavItem className="mr-2">
-                                            <NavLink className="nav-link" to="https://github.com/hamza-bouthour/react-nucamp/blob/main/src/components/MainComponent.js">
-                                                 Repos
-                                            </NavLink>
+                                            <Link to="/account">
+                                                <NavLink className="nav-link" to="/account">
+                                                    Account
+                                                </NavLink>
+                                            </Link>
                                         </NavItem>
                                         <NavItem className="mr-2">
                                             <NavLink className="nav-link" to="/contact">
-                                                 Contact Us
+                                                 Contact 
                                             </NavLink>
                                         </NavItem>
                                     </Nav>

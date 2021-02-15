@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { Breadcrumb, BreadcrumbItem,
+    Row, Label, Col } from 'reactstrap';
 
 class Contact extends Component {
     constructor(props) {
@@ -10,7 +12,16 @@ class Contact extends Component {
     }
     render() {
         return (
-            <div className="p-1">
+            <div className="p-1 container">
+            <div className="row custom-breadcrumbs">
+                <div className="col">
+                    <Breadcrumb>
+                        <BreadcrumbItem><Link to="/home">Home</Link></BreadcrumbItem>
+                        <BreadcrumbItem active>Contact</BreadcrumbItem>
+                    </Breadcrumb>
+                    <hr />
+                </div>
+            </div>
                 <div className="container mb-5 p-md-0 p-2 " style={{border: "solid 1px black",borderRadius: "7px"}}>
                     <div className="row">
                         <img className="col-12 col-md-6" src="https://i.postimg.cc/yN8yymc0/profile-photo3.png" style={{width: "10px"}}/>
