@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import Home from './HomeComponent';
 import Cart from './CartComponent';
 import Contact from './ContactComponent'
-import { Switch, Route, Redirect} from 'react-router-dom';
+import { Switch, Route, Redirect, withRouter} from 'react-router-dom';
+import { connect } from 'react-redux';
 import Header from './HeaderComponent';
 import Footer from './FooterComponent';
 import DishInfo from './DishInfoComponent';
@@ -13,15 +14,23 @@ import { QUICKESTDATA } from '../shared/quickestData';
 import { PRODUCTSDATA } from '../shared/productsData'
 import { Button } from 'bootstrap';
 
+const mapStateToProps = state => {
+    return {
+        popularData: state.popularData,
+        cheapestData: state.cheapestData,
+        quickestData: state.quickestData,
+        productsData: state.productsData
 
+    }
+}
 class Main extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            popularData: POPULARDATA,
-            cheapestData: CHEAPESTDATA,
-            quickestData: QUICKESTDATA,
-            productsData: PRODUCTSDATA,
+            // popularData: POPULARDATA,
+            // cheapestData: CHEAPESTDATA,
+            // quickestData: QUICKESTDATA,
+            // productsData: PRODUCTSDATA,
             cartItems: 0,
             cartProducts: [],
             pickedDish: 0,
@@ -61,7 +70,14 @@ class Main extends Component {
     } 
     updateCart(e) {
         console.log(e.target.className)
-        e.target.style.color = 'green'
+        console.log(e.target)
+        // console.log(e.target.previousSibling.previousSibling)
+        console.log(e.currentTarget.parentNode.style)
+        // previousSibling
+        e.target.parentNode.style.background = 'silver'
+        e.target.disabled = true;
+     
+        
         this.setState(prevState => ({
             
             cartProducts: [e.target.value, ...prevState.cartProducts],
@@ -92,7 +108,7 @@ class Main extends Component {
         const DishWidhId =({match}) => {
             return ( 
                 <div>
-                    <DishInfo popular={this.state.popularData.filter(popular => popular.id === +match.params.popularId)[0]}
+                    <DishInfo popular={this.props.popularData.filter(popular => popular.id === +match.params.popularId)[0]}
                                 onclick={this.updateCart}
                                 index={this.state.cartProducts}
                                 cartItems={this.state.cartItems}     
@@ -105,14 +121,14 @@ class Main extends Component {
             <div>
                 <Header cartItems={this.state.cartItems} />
                 <Switch>
-                    <Route exact path='/home' render={() =><Home userName={this.state.firstName} onClick={this.updateDish} popularData={this.state.popularData} cheapestData={this.state.cheapestData} quickestData={this.state.quickestData} dish={this.state.popularData[0]}/>} />
+                    <Route exact path='/home' render={() =><Home userName={this.state.firstName} onClick={this.updateDish} popularData={this.props.popularData} cheapestData={this.props.cheapestData} quickestData={this.props.quickestData} dish={this.props.popularData[0]}/>} />
                     <Route  exact path='/home/:popularId' component={DishWidhId}/>
-                    <Route  exact path='/cordon' render={() => <DishInfo popular={this.state.popularData[0]}   onclick={this.updateCart} index={this.state.cartProducts} cartItems={this.state.cartItems} />}/>
-                    <Route  exact path='/salmon' render={() => <DishInfo popular={this.state.popularData[1]}   onclick={this.updateCart} index={this.state.cartProducts} cartItems={this.state.cartItems} />}/>
-                    <Route  exact path='/spaghetti' render={() => <DishInfo popular={this.state.popularData[2]}   onclick={this.updateCart} index={this.state.cartProducts} cartItems={this.state.cartItems} />}/>
+                    <Route  exact path='/cordon' render={() => <DishInfo popular={this.props.popularData[0]}   onclick={this.updateCart} index={this.state.cartProducts} cartItems={this.state.cartItems} />}/>
+                    <Route  exact path='/salmon' render={() => <DishInfo popular={this.props.popularData[1]}   onclick={this.updateCart} index={this.state.cartProducts} cartItems={this.state.cartItems} />}/>
+                    <Route  exact path='/spaghetti' render={() => <DishInfo popular={this.props.popularData[2]}   onclick={this.updateCart} index={this.state.cartProducts} cartItems={this.state.cartItems} />}/>
                     <Route path='/contact' component={Contact}/>
                     <Route path='/account' render={() => <Account user={{firstName:this.state.firstName, lastName:this.state.lastName, email: this.state.email, cart:this.state.cartItems}} firstName={this.state.firstName} handleSubmit={this.handleSubmit}/> }/>
-                    <Route exact path='/cart' render={() =><Cart removeAll={this.removeAll} cartProducts={this.state.cartProducts} productsData={this.state.productsData} remove={this.removeItem} cartItems={this.state.cartItems}/>}/>
+                    <Route exact path='/cart' render={() =><Cart removeAll={this.removeAll} cartProducts={this.state.cartProducts} productsData={this.props.productsData} remove={this.removeItem} cartItems={this.state.cartItems}/>}/>
                     <Redirect to='/home'/> 
                 </Switch>
                 <Footer />
@@ -121,4 +137,4 @@ class Main extends Component {
         )
     }
 }
-export default Main;
+export default withRouter(connect(mapStateToProps)(Main));
