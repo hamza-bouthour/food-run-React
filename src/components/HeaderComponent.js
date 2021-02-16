@@ -38,7 +38,7 @@ class Header extends Component {
     render() {
         return (
             <React.Fragment>
-                <Jumbotron fluid className="jumbotron-1 p-0">
+                <Jumbotron fluid className="jumbotron-1 p-0" style={{margin: "0"}}>
                     <div className="container">
                         <div className="row mb-5">
                             
@@ -56,7 +56,7 @@ class Header extends Component {
 
                                         <LocalForm>
                                             <Row className="form-group">
-                                                <Label htmlFor="email" md={6}>Email</Label>
+                                                {/* <Label htmlFor="email" md={6}>Email</Label> */}
                                                 <Col md={10}>
                                                     <Control.text model=".email" id="email" name="email"
                                                         placeholder="Email"
@@ -79,10 +79,11 @@ class Header extends Component {
                                                 </Col>
                                             </Row>
                                             <Row className="form-group">
-                                            <Label htmlFor="password" md={6}>Passowrd</Label>
+                                            {/* <Label htmlFor="password" md={6}>Passowrd</Label> */}
                                                 <Col md={10}>
                                                 <Control.text model=".password" id="password" name="password"
                                                 className="form-control"
+                                                placeholder="password"
                                                 // validators={{
                                                 //     required,
                                                 //     validEmail

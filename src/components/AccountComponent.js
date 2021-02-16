@@ -40,7 +40,7 @@ class Account extends Component {
                 <div className="container">
                     <LocalForm name="Account form" onSubmit={values => this.props.handleSubmit(values)}>
                                 <Row className="form-group">
-                                    <Label htmlFor="firstName" md={2}>First Name</Label>
+                                    {/* <Label htmlFor="firstName" md={2}>First Name</Label> */}
                                     <Col md={10}>
                                         <Control.text model=".firstName" id="firstName" name="firstName"
                                             placeholder="First Name"
@@ -65,7 +65,7 @@ class Account extends Component {
                                     </Col>
                                 </Row>
                                 <Row className="form-group">
-                                    <Label htmlFor="lastName" md={2}>Last Name</Label>
+                                    {/* <Label htmlFor="lastName" md={2}>Last Name</Label> */}
                                     <Col md={10}>
                                         <Control.text model=".lastName" id="lastName" name="lastName"
                                             placeholder="Last Name"
@@ -90,7 +90,7 @@ class Account extends Component {
                                     </Col>
                                 </Row>
                                 <Row className="form-group">
-                                    <Label htmlFor="email" md={2}>Email</Label>
+                                    {/* <Label htmlFor="email" md={2}>Email</Label> */}
                                     <Col md={10}>
                                         <Control.text model=".email" id="email" name="email"
                                             placeholder="Email"
@@ -114,10 +114,11 @@ class Account extends Component {
                                 </Row>
                             
                                 <Row className="form-group">
-                                    <Label htmlFor="password" md={2}>Passowrd</Label>
+                                    {/* <Label htmlFor="password" md={2}>Passowrd</Label> */}
                                     <Col md={10}>
                                         <Control.text model=".password" id="password" name="password"
                                             className="form-control"
+                                            placeholder="password"
                                             // validators={{
                                             //     required,
                                             //     validEmail
@@ -136,7 +137,7 @@ class Account extends Component {
                                     </Col>
                                 </Row>                               
                                 <Row className="form-group">
-                                    <Col className="col-3 col-md-1 offset-md-2" >
+                                    <Col className="col-3 col-md-1 " >
                                     {/* <Link to='/home'> */}
                                         <Button type="submit" color="primary" disabled={false}>
                                             Submit
@@ -154,7 +155,7 @@ class Account extends Component {
                                     </Col>                           
                                 </Row>
                             </LocalForm>
-                </div>
+                        </div>
                 </div>
             )
         } else {
