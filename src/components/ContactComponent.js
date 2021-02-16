@@ -13,7 +13,7 @@ class Contact extends Component {
     render() {
         return (
             <div className="p-1 container">
-            <div className="row custom-breadcrumbs">
+            <div className="row">
                 <div className="col">
                     <Breadcrumb>
                         <BreadcrumbItem><Link to="/home">Home</Link></BreadcrumbItem>

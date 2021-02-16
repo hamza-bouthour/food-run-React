@@ -40,21 +40,23 @@ class Header extends Component {
             <React.Fragment>
                 <Jumbotron fluid className="jumbotron-1 p-0">
                     <div className="container">
-                        <div className="row">
-                            <div class="signin-button mr-2 mt-2">
-                            <Link to='/account'>
-
-                                <button class="btn btn-signup" data-target="#signupModal" data-toggle="modal"><strong>Sign-up</strong></button>
-                            </Link>
-                                <button onClick={this.toggleModal} class="btn text-white btn-signin" data-target="#signinModal" data-toggle="modal"><strong>Sign-in</strong></button>
-                            </div>
+                        <div className="row mb-5">
+                            
+                                {/* <Link to='/account' className="col-3 p-0">
+                                    <button class="btn" data-target="#signupModal" data-toggle="modal" style={{fontSize: "13px"}}>Sign-up</button>
+                                </Link> */}
+                          
+                            
+                                <button  onClick={this.toggleModal} class="btn-signin btn text-white col-3 offset-9 col-md-1 offset-md-11" data-target="#signinModal" data-toggle="modal" style={{fontSize: "13px"}}><i className="far fa-user fa-1"></i> Sign-in</button>
+                
+                          
                             <div>
-                            <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
-                                <ModalBody> 
+                                <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
+                                    <ModalBody> 
 
                                         <LocalForm>
                                             <Row className="form-group">
-                                                <Label htmlFor="email" md={2}>Email</Label>
+                                                <Label htmlFor="email" md={6}>Email</Label>
                                                 <Col md={10}>
                                                     <Control.text model=".email" id="email" name="email"
                                                         placeholder="Email"
@@ -77,7 +79,7 @@ class Header extends Component {
                                                 </Col>
                                             </Row>
                                             <Row className="form-group">
-                                            <Label htmlFor="password" md={2}>Passowrd</Label>
+                                            <Label htmlFor="password" md={6}>Passowrd</Label>
                                                 <Col md={10}>
                                                 <Control.text model=".password" id="password" name="password"
                                                 className="form-control"
@@ -99,8 +101,8 @@ class Header extends Component {
                                                 </Col>
                                             </Row>
                                             <Row className="form-group">
-                                                <Col className="col-3 col-md-2 offset-md-2" >
-                                                    <Button type="submit" color="primary" disabled={false}>
+                                                <Col className="col-3 col-md-2" >
+                                                    <Button type="submit" color="success" disabled={false}>
                                                         Submit
                                                     </Button>
                                                 </Col>                           
@@ -130,9 +132,9 @@ class Header extends Component {
                     
                     </div>
                     <div className="container mt-5">
-                            <Navbar dark expand="md" className="add-margin-top">
+                            <Navbar dark expand="md" className="mt-3 ml-0">
                             
-                                <NavbarToggler onClick={this.toggleNav} className="custom-navbar-toggler" />
+                                <NavbarToggler onClick={this.toggleNav} className="custom-navbar-toggler" style={{marginLeft: "-15px"}}/>
                                 <Collapse isOpen={this.state.isNavOpen} navbar>
                                     <Nav navbar className=" navbar-dark">
                                         <NavItem className="mr-2">

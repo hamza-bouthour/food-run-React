@@ -7,21 +7,21 @@
   /* background-image: url(https://i.postimg.cc/y8pVZ3tB/delete-1.jpg);
   background-size: cover;
   background-repeat: no-repeat; */
-
-  background: #000046;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #1CB5E0, #000046);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #1CB5E0, #000046); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: #000428;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #004e92, #000428);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #004e92, #000428); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  
+  
   
   
   
 }
 .signin-button {
-  position: absolute;
-  top: 0;
-  right: 0; }
-.btn-signup {
+  font-size: 5px;
+}
+/* .btn-signup {
   background-color: #0202aa;
-  color: white; }
+  color: white; } */
 
 /* .btn-signin {
   background-color: #000046; } */
@@ -54,6 +54,7 @@
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='white' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e"); }
 
 .custom-navbar-toggler {
+  margin-left: -15;
   border: 1px solid white; }
 .fa-custom {
   color: rgba(248, 246, 246, 0.9); }
@@ -63,9 +64,10 @@
   
 }
 .site-footer {
-  background: #000046;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #1CB5E0, #000046);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #1CB5E0, #000046); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: #000428;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #004e92, #000428);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #004e92, #000428); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  
   margin-top: 105px;
 
   
@@ -102,4 +104,22 @@
 .custom-breadcrumbs {
   margin-top: -30px;
   background: none;
+}
+.list-container {
+  background-color: black;
+}
+.custom-modal{
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  color: white;
+  padding: 0;
+ }
+ 
+ .modal-dialog {
+  background-color: black;
+}
+
+.modal-content {
+ background-color: black;
 }

@@ -8,6 +8,7 @@ import Header from './HeaderComponent';
 import Footer from './FooterComponent';
 import DishInfo from './DishInfoComponent';
 import Account from './AccountComponent';
+import MobileListComponent from './MobileListComponent'
 import { POPULARDATA } from '../shared/popularData';
 import { CHEAPESTDATA } from '../shared/cheapestData';
 import { QUICKESTDATA } from '../shared/quickestData';
@@ -74,7 +75,8 @@ class Main extends Component {
         // console.log(e.target.previousSibling.previousSibling)
         console.log(e.currentTarget.parentNode.style)
         // previousSibling
-        e.target.parentNode.style.background = 'silver'
+        e.target.parentNode.style.background = 'darkgreen'
+        e.target.parentNode.style.color = 'white'
         e.target.disabled = true;
      
         
@@ -129,6 +131,7 @@ class Main extends Component {
                     <Route path='/contact' component={Contact}/>
                     <Route path='/account' render={() => <Account user={{firstName:this.state.firstName, lastName:this.state.lastName, email: this.state.email, cart:this.state.cartItems}} firstName={this.state.firstName} handleSubmit={this.handleSubmit}/> }/>
                     <Route exact path='/cart' render={() =><Cart removeAll={this.removeAll} cartProducts={this.state.cartProducts} productsData={this.props.productsData} remove={this.removeItem} cartItems={this.state.cartItems}/>}/>
+                    {/* <Route exact path='/list' render={() =><MobileListComponent cartProducts={this.state.cartProducts} productsData={this.props.productsData}  cartItems={this.state.cartItems}/>}/> */}
                     <Redirect to='/home'/> 
                 </Switch>
                 <Footer />

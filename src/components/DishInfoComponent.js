@@ -50,7 +50,7 @@ function DishInfo(props) {
             </div>
                 <div className="row">
                     <img className="col-md-6 col-12" src={props.popular.img} alt="Card image cap" />
-                    <div className="col-md-6 col-12 row">
+                    <div className="col-md-6 col-12 row mx-auto">
                         <div className="col-12">
                             <h1>{props.popular.name}</h1>
                             <div>
@@ -59,23 +59,23 @@ function DishInfo(props) {
                             </div>
                         </div>
 
-                        <div className="row col-12 mt-3">
+                        <div className="row col-12 mt-3 mx-0">
                             <h4 className="col-12">An easy Chicken Cordon Bleu which is quick to prepare, and baked rather than fried. All the flavour, all the crunch, a beautiful golden crumb, and it’s better for you!</h4>
                             <div className="row mt-1 p-3">
-                                <div className="col-4">
+                                <div className="col">
                                     <Link to='/cordon' style={{color: "#1CB5E0"}}>Cordon bleu</Link>
                                 </div>
-                                <div className="col-4">
+                                <div className="col">
                                     <Link to='/salmon' style={{color: "#1CB5E0"}}>Baked salmon</Link>
                                 </div>
-                                <div className="col-4">
+                                <div className="col">
                                     <Link to='/spaghetti' style={{color: "#1CB5E0"}}>Spaghetti Carbonara</Link>
                                 </div>
                             </div>
                             <Link to="/cart" className="mt-3 col-12">
-                                <div className="row col-4 p-2 ml-1">   
+                                <div className="row col-4 p-2">   
                                     <img src="https://i.postimg.cc/qRsTwppM/shopping-bag.gif" style={{width: '50px'}} className="mx-0"></img>
-                                    <h4 style={{color: "green"}} className="my-auto col-4 mx-0">{props.cartItems}</h4>
+                                    <h4 style={{color: "green"}} className="my-auto col-4" style={{marginLeft: "-10px",color: "green"}}>{props.cartItems}</h4>
                                 </div>
                             </Link> 
                         </div>
