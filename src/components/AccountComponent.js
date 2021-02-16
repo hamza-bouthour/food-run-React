@@ -161,7 +161,7 @@ class Account extends Component {
         } else {
             return (
                 <div className="container">
-                <div className="row custom-breadcrumbs">
+                <div className="row">
                     <div className="col">
                         <Breadcrumb>
                             <BreadcrumbItem><Link to="/home">Home</Link></BreadcrumbItem>
