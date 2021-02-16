@@ -120,10 +120,12 @@ class Header extends Component {
                                 </Modal>        
                             </div>
                         </div>
-                        <div class="row mx-auto mt-5">
-                            <a href="index.html" class="col-2 col-md-1 offset-2 offset-md-4"><i class="fa-custom fa fa-3x fa-shopping-cart"></i></a>
-                            <h3 class="col-md-4 col-6 text-white my-auto">Food Run</h3>
-                        </div>
+                        <Link to='/home'>
+                            <div class="row mx-auto mt-5">
+                                <Link to='/home' class="col-2 col-md-1 offset-2 offset-md-4"><i class="fa-custom fa fa-3x fa-shopping-cart"></i></Link>
+                                <h3 class="col-md-4 col-6 text-white my-auto">Food Run</h3>
+                            </div>
+                        </Link>
                     </div>
                     <div className="container">
                         <form className="row justify-content-center mt-5">
