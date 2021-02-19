@@ -19,6 +19,7 @@ import { addProduct } from '../redux/ActionCreators';
 import { removeProduct } from '../redux/ActionCreators';
 import { addAccount } from '../redux/ActionCreators';
 import { removeAllProducts } from '../redux/ActionCreators'
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
 const mapStateToProps = state => {
     return {
@@ -128,18 +129,22 @@ class Main extends Component {
             
             <div>
                 <Header cartItems={this.props.cartItems} userName={this.props.account.firstName}/>
-                <Switch>
-                    <Route exact path='/home' render={() =><Home userName={this.props.firstName} onClick={this.updateDish} popularData={this.props.popularData} cheapestData={this.props.cheapestData} quickestData={this.props.quickestData} dish={this.props.popularData[0]}/>} />
-                    <Route  exact path='/home/:popularId' component={DishWidhId}/>
-                    <Route  exact path='/cordon' render={() => <DishInfo popular={this.props.popularData[4]}   onclick={this.addPro} index={this.state.cartProducts} cartItems={this.props.cartItems} />}/>
-                    <Route  exact path='/salmon' render={() => <DishInfo popular={this.props.popularData[5]}   onclick={this.addPro} index={this.state.cartProducts} cartItems={this.props.cartItems} />}/>
-                    <Route  exact path='/spaghetti' render={() => <DishInfo popular={this.props.popularData[6]}   onclick={this.addPro} index={this.state.cartProducts} cartItems={this.props.cartItems} />}/>
-                    <Route path='/contact' component={Contact}/>
-                    <Route path='/account' render={() => <Account user={{firstName:this.props.account.firstName, lastName:this.props.account.lastName, email: this.props.account.email, cart:this.props.cartItems}}  handleSubmit={this.handleSubmit}/> }/>
-                    <Route exact path='/cart' render={() =><Cart removeAll={this.removeAll} cartProducts={this.props.cartProducts} productsData={this.props.productsData} remove={this.removeItem} cartItems={this.props.cartItems}/>}/>
-                    {/* <Route exact path='/list' render={() =><MobileListComponent cartProducts={this.state.cartProducts} productsData={this.props.productsData}  cartItems={this.state.cartItems}/>}/> */}
-                    <Redirect to='/home'/> 
-                </Switch>
+                    <TransitionGroup>
+                        <CSSTransition key={this.props.location.key} classNames="page" timeout={300}>
+                            <Switch>
+                                <Route exact path='/home' render={() =><Home userName={this.props.firstName} onClick={this.updateDish} popularData={this.props.popularData} cheapestData={this.props.cheapestData} quickestData={this.props.quickestData} dish={this.props.popularData[0]}/>} />
+                                <Route  exact path='/home/:popularId' component={DishWidhId}/>
+                                <Route  exact path='/cordon' render={() => <DishInfo popular={this.props.popularData[4]}   onclick={this.addPro} index={this.state.cartProducts} cartItems={this.props.cartItems} />}/>
+                                <Route  exact path='/salmon' render={() => <DishInfo popular={this.props.popularData[5]}   onclick={this.addPro} index={this.state.cartProducts} cartItems={this.props.cartItems} />}/>
+                                <Route  exact path='/spaghetti' render={() => <DishInfo popular={this.props.popularData[6]}   onclick={this.addPro} index={this.state.cartProducts} cartItems={this.props.cartItems} />}/>
+                                <Route path='/contact' component={Contact}/>
+                                <Route path='/account' render={() => <Account user={{firstName:this.props.account.firstName, lastName:this.props.account.lastName, email: this.props.account.email, cart:this.props.cartItems}}  handleSubmit={this.handleSubmit}/> }/>
+                                <Route exact path='/cart' render={() =><Cart removeAll={this.removeAll} cartProducts={this.props.cartProducts} productsData={this.props.productsData} remove={this.removeItem} cartItems={this.props.cartItems}/>}/>
+                                {/* <Route exact path='/list' render={() =><MobileListComponent cartProducts={this.state.cartProducts} productsData={this.props.productsData}  cartItems={this.state.cartItems}/>}/> */}
+                                <Redirect to='/home'/> 
+                            </Switch>
+                        </CSSTransition>
+                    </TransitionGroup>
                 <Footer />
             </div>
          
