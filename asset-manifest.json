@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/react-food-run/static/css/main.75b43d11.chunk.css",
-    "main.js": "/react-food-run/static/js/main.475cfcba.chunk.js",
-    "main.js.map": "/react-food-run/static/js/main.475cfcba.chunk.js.map",
-    "runtime-main.js": "/react-food-run/static/js/runtime-main.6f4a596c.js",
-    "runtime-main.js.map": "/react-food-run/static/js/runtime-main.6f4a596c.js.map",
+    "main.css": "/react-food-run/static/css/main.8260164f.chunk.css",
+    "main.js": "/react-food-run/static/js/main.962d366a.chunk.js",
+    "main.js.map": "/react-food-run/static/js/main.962d366a.chunk.js.map",
+    "runtime-main.js": "/react-food-run/static/js/runtime-main.ac234f9d.js",
+    "runtime-main.js.map": "/react-food-run/static/js/runtime-main.ac234f9d.js.map",
     "static/css/2.4db4d501.chunk.css": "/react-food-run/static/css/2.4db4d501.chunk.css",
-    "static/js/2.a06e2b09.chunk.js": "/react-food-run/static/js/2.a06e2b09.chunk.js",
-    "static/js/2.a06e2b09.chunk.js.map": "/react-food-run/static/js/2.a06e2b09.chunk.js.map",
-    "static/js/3.12d23958.chunk.js": "/react-food-run/static/js/3.12d23958.chunk.js",
-    "static/js/3.12d23958.chunk.js.map": "/react-food-run/static/js/3.12d23958.chunk.js.map",
+    "static/js/2.086a938e.chunk.js": "/react-food-run/static/js/2.086a938e.chunk.js",
+    "static/js/2.086a938e.chunk.js.map": "/react-food-run/static/js/2.086a938e.chunk.js.map",
+    "static/js/3.b135a4a8.chunk.js": "/react-food-run/static/js/3.b135a4a8.chunk.js",
+    "static/js/3.b135a4a8.chunk.js.map": "/react-food-run/static/js/3.b135a4a8.chunk.js.map",
     "index.html": "/react-food-run/index.html",
     "static/css/2.4db4d501.chunk.css.map": "/react-food-run/static/css/2.4db4d501.chunk.css.map",
-    "static/css/main.75b43d11.chunk.css.map": "/react-food-run/static/css/main.75b43d11.chunk.css.map",
-    "static/js/2.a06e2b09.chunk.js.LICENSE.txt": "/react-food-run/static/js/2.a06e2b09.chunk.js.LICENSE.txt"
+    "static/css/main.8260164f.chunk.css.map": "/react-food-run/static/css/main.8260164f.chunk.css.map",
+    "static/js/2.086a938e.chunk.js.LICENSE.txt": "/react-food-run/static/js/2.086a938e.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.6f4a596c.js",
+    "static/js/runtime-main.ac234f9d.js",
     "static/css/2.4db4d501.chunk.css",
-    "static/js/2.a06e2b09.chunk.js",
-    "static/css/main.75b43d11.chunk.css",
-    "static/js/main.475cfcba.chunk.js"
+    "static/js/2.086a938e.chunk.js",
+    "static/css/main.8260164f.chunk.css",
+    "static/js/main.962d366a.chunk.js"
   ]
 }
