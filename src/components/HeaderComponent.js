@@ -166,6 +166,11 @@ class Header extends Component {
                                                  Contact 
                                             </NavLink>
                                         </NavItem>
+                                        <NavItem className="mr-2 offset-10 text-white my-auto d-none d-md-block col-4">
+                                            
+                                                 Welcome{' '}{this.props.userName}! 
+                                       
+                                        </NavItem>
                                     </Nav>
                                 </Collapse>
                         </Navbar>

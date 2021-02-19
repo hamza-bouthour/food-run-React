@@ -23,11 +23,6 @@ class Cart extends Component {
     this.checkItem = this.checkItem.bind(this);
     }
 
-// changecolor(e) {
-//     this.setState({
-//         color: !this.state.color
-//     })
-// }
 toggleModal() {
     this.setState({
         isModalOpen: !this.state.isModalOpen
@@ -60,7 +55,7 @@ render() {
     })
     const renderProductsModal =  
     this.props.cartProducts.map((pro) => {
-        total = total + this.props.productsData[pro].price
+        // total = total + this.props.productsData[pro].price
         return (
             <Card key={this.props.productsData[pro].name} className="col-5 mx-auto my-2 p-0">
                 <CardImg top width="100%" src={this.props.productsData[pro].img} alt="Card image cap" />
@@ -87,7 +82,7 @@ render() {
                     <hr />
                 </div>
             </div>
-            <div className="row">
+            <div className="row mt-5">
                 <h2 className="col-4">Your cart</h2>
                 <div className="offset-md-4 offset-2 my-auto">
                     <button onClick={this.props.removeAll} className="cart-buttons"><h5 style={{color: "#1CB5E0"}}>Remove all</h5></button>

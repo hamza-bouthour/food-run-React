@@ -22,11 +22,11 @@ class Account extends Component {
 
 
     render() {
-        if (this.props.firstName.length === 0) {
+        if (this.props.user.firstName.length === 0) {
 
             return (
             <div className="container">
-                <div className="row">
+                <div className="row mb-5">
                     <div className="col">
                         <Breadcrumb>
                             <BreadcrumbItem><Link to="/home">Home</Link></BreadcrumbItem>
@@ -37,7 +37,7 @@ class Account extends Component {
                 </div>
             
     
-                <div className="container">
+                <div className="container my-5">
                     <LocalForm name="Account form" onSubmit={values => this.props.handleSubmit(values)}>
                                 <Row className="form-group">
                                     {/* <Label htmlFor="firstName" md={2}>First Name</Label> */}
@@ -170,7 +170,7 @@ class Account extends Component {
 
                     </div>
                 </div>
-                <div className="row">
+                <div className="row mt-5">
                     <Table>
                         <tbody>
                             <tr>

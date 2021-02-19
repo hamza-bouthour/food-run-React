@@ -12,5 +12,14 @@ export const PRODUCTSDATA = {
     rosemaryProductId:{ img: 'https://i.postimg.cc/tC283v95/rosemary.png',price: 0.99, name: "Rosemary", productId: 'rosemaryProductId'},
     lemonProductId: { img: 'https://i.postimg.cc/pXfz43mf/lemon.jpg', price: 2.99, name: "Lemon", productId: 'lemonProductId'},
     garlicProductId: { img: 'https://i.postimg.cc/jdJFGqTD/garlic.png', price: 2.45, name: "Garlic", productId: 'garlicProductId'},
-    spaghettiProductId: { img: 'https://i.postimg.cc/prkzSFdw/spaghetti.jpg',price: 1.67, name: "Spaghetti", productId: 'spaghettiProductId'}
+    spaghettiProductId: { img: 'https://i.postimg.cc/prkzSFdw/spaghetti.jpg',price: 1.67, name: "Spaghetti", productId: 'spaghettiProductId'},
+    potatoProductId: { img: 'https://i.postimg.cc/VsZ3cz7f/potato.jpg', price: 5.94,name: "Potato", productId: "potatoProductId"},
+    creamProductId: { img: 'https://i.postimg.cc/k5ypYC6d/cream.png', price: 1.87,name: "Cream", productsId:"creamProductId"},
+    vegetableOilProductId: { img: 'https://i.postimg.cc/tC283v95/rosemary.png',price: 0.99, name: "Vegetable oil",productId:"vegetableOilProductId"},
+    sausagesProductId: { img: 'https://i.postimg.cc/k4Pcqbx3/brown-rice.png', price: 2.45, name: "Sausages",productId:"sausagesProductId"},
+    gingerMarmaladeProductId: { img: 'https://i.postimg.cc/6QTvgLT5/Buderim-Ginger-Original-Marmalade.jpg', price: 5.94,name: "Ginger marmalade",productsId:"gingerMarmaladeProductId"},
+    carrotProductId: { img: 'https://i.postimg.cc/76cKGZJw/carrot.jpg', price: 1.87,name: "Carrot", productId:"carrotProductId"},
+    baconProductId: { img: 'https://i.postimg.cc/6ptVjvdy/sausageproduct.png',price: 0.99, name: "Bacon", productId: "baconProductId"},
+    blackBeansProductId: { img: 'https://i.postimg.cc/R07t1bny/blackbeans.png', price: 5.94,name: "Black beans",productId: 'blackBeansProductId'},
+    brownRiceProductId: { img: 'https://i.postimg.cc/k4Pcqbx3/brown-rice.png', price: 2.45, name: "Brown rice", productId: "brownRiceProductId"},
 }

@@ -1,0 +1,8 @@
+export const ADD_PRODUCT = 'ADD_PRODUCT';
+export const REMOVE_PRODUCT = 'REMOVE_PRODUCT';
+export const REMOVE_ALL_PRODUCTS = 'REMOVE_ALL_PRODUCTS';
+export const ADD_PRODUCT_NUMBER = 'ADD_PRODUCT_NUMBER';
+export const ADD_ACCOUNT = 'ADD_ACCOUNT';
+export const CART_LOADING = 'CART_LOADING';
+export const CART_FAILED = 'CART_FAILED';
+export const CART_OK = 'CART_OK';

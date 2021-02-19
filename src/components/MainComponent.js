@@ -3,7 +3,7 @@ import Home from './HomeComponent';
 import Cart from './CartComponent';
 import Contact from './ContactComponent'
 import { Switch, Route, Redirect, withRouter} from 'react-router-dom';
-import { connect } from 'react-redux';
+
 import Header from './HeaderComponent';
 import Footer from './FooterComponent';
 import DishInfo from './DishInfoComponent';
@@ -14,15 +14,32 @@ import { CHEAPESTDATA } from '../shared/cheapestData';
 import { QUICKESTDATA } from '../shared/quickestData';
 import { PRODUCTSDATA } from '../shared/productsData'
 import { Button } from 'bootstrap';
+import { connect } from 'react-redux';
+import { addProduct } from '../redux/ActionCreators';
+import { removeProduct } from '../redux/ActionCreators';
+import { addAccount } from '../redux/ActionCreators';
+import { removeAllProducts } from '../redux/ActionCreators'
 
 const mapStateToProps = state => {
     return {
         popularData: state.popularData,
         cheapestData: state.cheapestData,
         quickestData: state.quickestData,
-        productsData: state.productsData
+        productsData: state.productsData,
+        cartItems: state.cartItems,
+        cartProducts: state.cartProducts,
+        buttonCheckedStyle: state.buttonCheckedStyle,
+        account: state.account
 
     }
+}
+const mapDispatchToProps = {
+    
+    addProduct: (product) => (addProduct(product)),
+    removeProduct: (event, product) => (removeProduct(event, product)),
+    addAccount: (firstName, lastName, email, password) => (addAccount(firstName, lastName, email, password)),
+    removeAllProducts: (product) => (removeAllProducts(product))
+    
 }
 class Main extends Component {
     constructor(props) {
@@ -32,88 +49,77 @@ class Main extends Component {
             // cheapestData: CHEAPESTDATA,
             // quickestData: QUICKESTDATA,
             // productsData: PRODUCTSDATA,
-            cartItems: 0,
-            cartProducts: [],
-            pickedDish: 0,
-            total : 0,
-            button: {
-                enabled: true,
-                text: 'add'
-            },
-            firstName: '',
-            lastName: '',
-            phoneNum: '',
-            email: '',
+            // cartItems: 0,
+            // cartProducts: [],
+            // pickedDish: 0,
+            // total : 0,
+            // button: {
+            //     enabled: true,
+            //     text: 'add'
+            // },
+            // firstName: '',
+            // lastName: '',
+            // phoneNum: '',
+            // email: '',
 
         }
-        this.updateCart = this.updateCart.bind(this);
+
         this.removeItem = this.removeItem.bind(this);
         this.removeAll = this.removeAll.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-    }
-    handleSubmit(event) {
+        this.addPro = this.addPro.bind(this)
 
-        console.log(event)
-        // event.preventDefault();
-        // this.setState({
-        //     firstName: 'hamza'
-        // });
-        for (const [key, value] of Object.entries(event)) {
+    }
+    handleSubmit(values) {
+        // console.log(event)
+        // for (const [key, value] of Object.entries(event)) {
             
-                this.setState({
-                 [key]: value
-             });
-             console.log(this.state.key)
-
-    }
-  
-         
+        //         this.setState({
+        //          [key]: value
+        //      });
+            //  console.log(this.state.key)
+        console.log(values)
+        this.props.addAccount(values.firstName, values.lastName, values.email, values.passowrd)
+    // }   
     } 
-    updateCart(e) {
-        console.log(e.target.className)
+
+     addPro(e) {
+        e.preventDefault();
+        e.target.parentNode.style.background = 'darkgreen' 
+        e.target.disabled = true; 
+         e.target.parentNode.style.color = 'white'
         console.log(e.target)
-        // console.log(e.target.previousSibling.previousSibling)
-        console.log(e.currentTarget.parentNode.style)
-        // previousSibling
-        e.target.parentNode.style.background = 'darkgreen'
-        e.target.parentNode.style.color = 'white'
-        e.target.disabled = true;
-     
-        
-        this.setState(prevState => ({
-            
-            cartProducts: [e.target.value, ...prevState.cartProducts],
-            cartItems: this.state.cartItems + 1
-        }))
+        this.props.addProduct(e.target.value)
+        console.log(this.props.cartProducts)
     }
+
     
     removeAll() {
-        this.setState({
-            cartProducts: [],
-            cartItems: 0
-        })
+   this.props.removeAllProducts(0)
+   console.log('remove')
     }
     removeItem(event) {
-      const asba = this.state.cartProducts
-      for (let i=0; i<asba.length; i++) {
-          if (asba[i] === event.target.value) {
-              console.log(asba.splice(i, 1))
-              console.log(asba)
-              this.setState({
-                cartProducts: asba,
-                cartItems: this.state.cartItems - 1
-            })
-          }
-      }
+    //   const asba = this.state.cartProducts
+    //   for (let i=0; i<asba.length; i++) {
+    //       if (asba[i] === event.target.value) {
+    //           console.log(asba.splice(i, 1))
+    //           console.log(asba)
+    //           this.setState({
+    //             cartProducts: asba,
+    //             cartItems: this.state.cartItems - 1
+    //         })
+    //       }
+    //   }
+    this.props.removeProduct(event, this.props.cartProducts)
     }
     render() {
         const DishWidhId =({match}) => {
             return ( 
                 <div>
                     <DishInfo popular={this.props.popularData.filter(popular => popular.id === +match.params.popularId)[0]}
-                                onclick={this.updateCart}
-                                index={this.state.cartProducts}
-                                cartItems={this.state.cartItems}     
+                                onclick={this.addPro}
+                                // index={this.props.cartProducts}
+                                cartItems={this.props.cartItems}     
                     />
                  </div>
             )
@@ -121,16 +127,16 @@ class Main extends Component {
         return (
             
             <div>
-                <Header cartItems={this.state.cartItems} />
+                <Header cartItems={this.props.cartItems} userName={this.props.account.firstName}/>
                 <Switch>
-                    <Route exact path='/home' render={() =><Home userName={this.state.firstName} onClick={this.updateDish} popularData={this.props.popularData} cheapestData={this.props.cheapestData} quickestData={this.props.quickestData} dish={this.props.popularData[0]}/>} />
+                    <Route exact path='/home' render={() =><Home userName={this.props.firstName} onClick={this.updateDish} popularData={this.props.popularData} cheapestData={this.props.cheapestData} quickestData={this.props.quickestData} dish={this.props.popularData[0]}/>} />
                     <Route  exact path='/home/:popularId' component={DishWidhId}/>
-                    <Route  exact path='/cordon' render={() => <DishInfo popular={this.props.popularData[0]}   onclick={this.updateCart} index={this.state.cartProducts} cartItems={this.state.cartItems} />}/>
-                    <Route  exact path='/salmon' render={() => <DishInfo popular={this.props.popularData[1]}   onclick={this.updateCart} index={this.state.cartProducts} cartItems={this.state.cartItems} />}/>
-                    <Route  exact path='/spaghetti' render={() => <DishInfo popular={this.props.popularData[2]}   onclick={this.updateCart} index={this.state.cartProducts} cartItems={this.state.cartItems} />}/>
+                    <Route  exact path='/cordon' render={() => <DishInfo popular={this.props.popularData[4]}   onclick={this.addPro} index={this.state.cartProducts} cartItems={this.props.cartItems} />}/>
+                    <Route  exact path='/salmon' render={() => <DishInfo popular={this.props.popularData[5]}   onclick={this.addPro} index={this.state.cartProducts} cartItems={this.props.cartItems} />}/>
+                    <Route  exact path='/spaghetti' render={() => <DishInfo popular={this.props.popularData[6]}   onclick={this.addPro} index={this.state.cartProducts} cartItems={this.props.cartItems} />}/>
                     <Route path='/contact' component={Contact}/>
-                    <Route path='/account' render={() => <Account user={{firstName:this.state.firstName, lastName:this.state.lastName, email: this.state.email, cart:this.state.cartItems}} firstName={this.state.firstName} handleSubmit={this.handleSubmit}/> }/>
-                    <Route exact path='/cart' render={() =><Cart removeAll={this.removeAll} cartProducts={this.state.cartProducts} productsData={this.props.productsData} remove={this.removeItem} cartItems={this.state.cartItems}/>}/>
+                    <Route path='/account' render={() => <Account user={{firstName:this.props.account.firstName, lastName:this.props.account.lastName, email: this.props.account.email, cart:this.props.cartItems}}  handleSubmit={this.handleSubmit}/> }/>
+                    <Route exact path='/cart' render={() =><Cart removeAll={this.removeAll} cartProducts={this.props.cartProducts} productsData={this.props.productsData} remove={this.removeItem} cartItems={this.props.cartItems}/>}/>
                     {/* <Route exact path='/list' render={() =><MobileListComponent cartProducts={this.state.cartProducts} productsData={this.props.productsData}  cartItems={this.state.cartItems}/>}/> */}
                     <Redirect to='/home'/> 
                 </Switch>
@@ -140,4 +146,4 @@ class Main extends Component {
         )
     }
 }
-export default withRouter(connect(mapStateToProps)(Main));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Main));

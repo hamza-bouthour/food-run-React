@@ -5,6 +5,7 @@ import {
 
 
 import { NavLink, Link } from 'react-router-dom';
+import Youtube from './YoutubeComponent'
 
 function DishInfo(props) { 
     
@@ -38,9 +39,9 @@ function DishInfo(props) {
         })
         
         return (           
-            <div key={props.popular.id} className="container mt-4">
+            <div key={props.popular.id} className="container">
              <div className="row">
-                <div className="col">
+                <div className="col" >
                     <Breadcrumb>
                         <BreadcrumbItem><Link to="/home">Home</Link></BreadcrumbItem>
                         <BreadcrumbItem active>{props.popular.name}</BreadcrumbItem>
@@ -48,7 +49,7 @@ function DishInfo(props) {
                     <hr />
                 </div>
             </div>
-                <div className="row">
+                <div className="row mt-4">
                     <img className="col-md-6 col-12" src={props.popular.img} alt="Card image cap" />
                     <div className="col-md-6 col-12 row mx-auto">
                         <div className="col-12">
@@ -60,7 +61,7 @@ function DishInfo(props) {
                         </div>
 
                         <div className="row col-12 mt-3 mx-0">
-                            <h4 className="col-12">An easy Chicken Cordon Bleu which is quick to prepare, and baked rather than fried. All the flavour, all the crunch, a beautiful golden crumb, and it’s better for you!</h4>
+                            <h4 className="col-12">{props.popular.description}</h4>
                             <div className="row mt-1 p-3">
                                 <div className="col">
                                     <Link to='/cordon' style={{color: "#1CB5E0"}}>Cordon bleu</Link>
@@ -96,6 +97,13 @@ function DishInfo(props) {
                     <div className="containter col-md-6 p-4">
                         <div className="row">
                             <h2>Directions</h2>
+                        </div>
+                        <div className="pt-3 row">
+                        <div className="col-12">
+
+                            <Youtube query={props.popular.name} video={props.popular.video}/>
+                        </div>
+                            
                         </div>
                         <div className="row p-4">
                             {dishDirections}
