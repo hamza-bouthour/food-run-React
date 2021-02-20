@@ -29,7 +29,7 @@ class Account extends Component {
                 <div className="row mb-5">
                     <div className="col">
                         <Breadcrumb>
-                            <BreadcrumbItem><Link to="/home">Home</Link></BreadcrumbItem>
+                        <BreadcrumbItem><Link to="/home"><img src="https://i.postimg.cc/9fyPp0H1/aaaaa.png" style={{width: "30px"}}></img></Link></BreadcrumbItem>
                             <BreadcrumbItem active>Account</BreadcrumbItem>
                         </Breadcrumb>
                         <hr />
@@ -42,7 +42,9 @@ class Account extends Component {
                                 <Row className="form-group">
                                     {/* <Label htmlFor="firstName" md={2}>First Name</Label> */}
                                     <Col md={10}>
-                                        <Control.text model=".firstName" id="firstName" name="firstName"
+                                        <Control.text
+                                        style={{border: "solid 1px #1CB5E0"}}
+                                         model=".firstName" id="firstName" name="firstName"
                                             placeholder="First Name"
                                             className="form-control"
                                             validators={{
@@ -67,7 +69,7 @@ class Account extends Component {
                                 <Row className="form-group">
                                     {/* <Label htmlFor="lastName" md={2}>Last Name</Label> */}
                                     <Col md={10}>
-                                        <Control.text model=".lastName" id="lastName" name="lastName"
+                                        <Control.text style={{border: "solid 1px #1CB5E0"}} model=".lastName" id="lastName" name="lastName"
                                             placeholder="Last Name"
                                             className="form-control"
                                             validators={{
@@ -92,7 +94,7 @@ class Account extends Component {
                                 <Row className="form-group">
                                     {/* <Label htmlFor="email" md={2}>Email</Label> */}
                                     <Col md={10}>
-                                        <Control.text model=".email" id="email" name="email"
+                                        <Control.text style={{border: "solid 1px #1CB5E0"}} model=".email" id="email" name="email"
                                             placeholder="Email"
                                             className="form-control"
                                             validators={{
@@ -116,7 +118,7 @@ class Account extends Component {
                                 <Row className="form-group">
                                     {/* <Label htmlFor="password" md={2}>Passowrd</Label> */}
                                     <Col md={10}>
-                                        <Control.text model=".password" id="password" name="password"
+                                        <Control.text style={{border: "solid 1px #1CB5E0"}} model=".password" id="password" name="password"
                                             className="form-control"
                                             placeholder="password"
                                             // validators={{
@@ -139,7 +141,7 @@ class Account extends Component {
                                 <Row className="form-group">
                                     <Col className="col-3 col-md-1 " >
                                     {/* <Link to='/home'> */}
-                                        <Button type="submit" color="primary" disabled={false}>
+                                        <Button className="text-white" type="submit"  style={{background: " #1CB5E0",border: "none",color: "white !important "}} color="primary" disabled={false}>
                                             Submit
                                         </Button>
                                     {/* </Link> */}
@@ -147,7 +149,7 @@ class Account extends Component {
                                     </Col>                           
                                     <Col md={{size: 2}} sm={2} className="col-2 col-md-2">
                                     <Link to='/home'>
-                                        <Button type="submit" color="primary" disabled={false}>
+                                        <Button type="submit" style={{background: " #1CB5E0",border: "none",color: "white"}}  disabled={false}>
                                             Home
                                         </Button>
                                     </Link>

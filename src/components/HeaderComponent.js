@@ -121,9 +121,9 @@ class Header extends Component {
                             </div>
                         </div>
                         <Link to='/home'>
-                            <div class="row mx-auto mt-5">
-                                <Link to='/home' class="col-2 col-md-1 offset-2 offset-md-4"><i class="fa-custom fa fa-3x fa-shopping-cart"></i></Link>
-                                <h3 class="col-md-4 col-6 text-white my-auto">Food Run</h3>
+                            <div class="row mt-5">
+                                <Link to='/home' class="mx-auto"><img src="https://i.postimg.cc/1XsqMrr3/logo.png" style={{width: "180px"}}></img></Link>
+                                {/* <h3 class="col-md-4 col-6 text-white my-auto">Food Run</h3> */}
                             </div>
                         </Link>
                     </div>
@@ -135,7 +135,7 @@ class Header extends Component {
                     
                     </div>
                     <div className="container mt-5">
-                            <Navbar dark expand="md" className="mt-3 ml-0">
+                            <Navbar dark expand="md" className="mt-3 ml-0" >
                             
                                 <NavbarToggler onClick={this.toggleNav} className="custom-navbar-toggler" style={{marginLeft: "-15px"}}/>
                                 <Collapse isOpen={this.state.isNavOpen} navbar>
@@ -149,14 +149,14 @@ class Header extends Component {
                                             
                                         </NavItem>
                                         <NavItem className="mr-2">
-                                            <NavLink className="nav-link" to="/cart">
+                                            <NavLink className="nav-link" to="/cart" >
                                                  Cart
                                                  <span>({this.props.cartItems})</span>
                                             </NavLink>
                                         </NavItem>
                                         <NavItem className="mr-2">
                                             <Link to="/account">
-                                                <NavLink className="nav-link" to="/account">
+                                                <NavLink className="nav-link" to="/account" >
                                                     Account
                                                 </NavLink>
                                             </Link>
