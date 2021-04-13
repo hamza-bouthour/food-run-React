@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Youtube from './YoutubeComponent'
 import Loading  from './LoadingComponent';
+import ReactPlayer from 'react-player';
 import {  addProductToCart, addProductToTotal, removeProductFromCart } from '../redux/ActionCreators'
 
 
@@ -78,8 +79,8 @@ const RenderProduct = (props) => {
     return (
         props.directions.map(dir => {
             return (
-                <div>
-                    <h5>{dir}</h5>
+                <div style={{color: '#3b4e76'}}>
+                    <h6>{dir}</h6>
                 </div>
             )
         })
@@ -90,18 +91,23 @@ const RenderProduct = (props) => {
     const {popular} = props;
 
     return (
-        <div className="row mt-4">
+        <div className="row mt-4 p-0">
             <img className="col-md-6 col-12" src={popular.img} alt="Card image cap" />
-            <div className="col-md-6 col-12 row mx-auto">
-                <div className="col-12">
+            <div className="col-md-6 col-12 row mx-auto p-0">
+                <div className="col-12 ">
                     <h1>{popular.name}</h1>
                     <div>
                         <small>Cooking: </small><span className="text-success"><b>{popular.time}</b><i className="far fa-clock mr-md-4"></i></span>{' '}
                         <small>Cost: </small><span className="text-success"><b>{popular.cost}</b><i className="fas fa-dollar-sign"></i></span>
                     </div>
                 </div>
-                <div className="row col-12 mt-3 mx-0">
-                    <h4 className="col-12">{popular.description}</h4>
+                <div className="col-12 mt-3 mx-0">
+                    <h6 style={{color: '#3b4e76'}}>{popular.description}</h6>
+                    <div style={{display: 'flex', justifyContent: 'flex-start', flexDirection: 'row', marginTop: 30}}>
+                        <Button className="dish-buttons">Add to list</Button>
+                        <Button className="dish-buttons">Add to favorite</Button>
+                        <Button className="dish-buttons">Full recipe</Button>
+                    </div>
                 </div>         
             </div>
         </div>
@@ -170,8 +176,8 @@ const productRemove = (id) => {
                 </div>
                 <div className="col-6">
                         <h2>Directions</h2>
-                        <Youtube query={popular.name} video={popular.video} isLoading={props.populars.products.isLoading}/>
-                    <div className=" mt-0">
+                        <ReactPlayer className="mw-100" url={popular.video} />
+                    <div className=" mt-2">
                         <RenderDirections 
                             directions={directions} 
                             isLoading={props.populars.products.isLoading} 

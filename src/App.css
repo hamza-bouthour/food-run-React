@@ -126,3 +126,15 @@ ol {
   transform: translateX(0%);
   transition: 300ms ease-out;
 }
+.dish-buttons {
+  background-color: #039FB6  !important;
+  border-radius: 5px !important;
+  -webkit-border-radius: 5px  !important;
+  -moz-border-radius: 5px !important;
+  border: solid 1px #E78200 !important;
+  padding: 0 30px;
+
+  margin-right: 25px;
+
+
+}

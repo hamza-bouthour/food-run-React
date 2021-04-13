@@ -147,8 +147,8 @@ class Header extends Component {
                                         </NavItem>
                                         <NavItem className="mr-2">
                                             <NavLink className="nav-link" to="/cart" >
-                                                 Cart
-                                                 <span>({})</span>
+                                                 List
+                                                
                                             </NavLink>
                                         </NavItem>
                                         <NavItem className="mr-2">
