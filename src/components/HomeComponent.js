@@ -1,57 +1,60 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import Popular from './PopularComponent';
-import Cheapest from './CheapestComponent';
-import Quickest from "./QuickestComponent";
-import DishInfo from './DishInfoComponent';
+import Loading  from './LoadingComponent';
+import { connect } from 'react-redux';
+import { fetchPopulars, fetchProducts } from '../redux/ActionCreators';
 
 
+const mapDispatchToProps = {
+    fetchPopulars,
+    fetchProducts
+};
+const mapStateToProps = (populars, account) => {
+    return {
+        populars,
+        account
+    };
+};
 function Home(props) {
-    const popularList = props.popularData.map(popular => {
+
+    useEffect(() => {
+        props.fetchPopulars()
+        return () => {props.fetchProducts()}
+    }, [])
+
+    if (props.populars.populars.isLoading) {
+        return <Loading />;
+    }
+    if (props.populars.populars.errMess) {
         return (
-            <Popular popular={popular} onClick={props.onClick}/>
-        )
-    })
-    const cheapestList = props.cheapestData.map(cheap => {
-        return (
-            <Cheapest cheapest={cheap} />
-        )
-    })
-    const quickestList = props.quickestData.map(quick => {
-        return (
-            <Quickest quickest={quick} />
-        )
-    })
-    
-        return (
-            <div>         
-                <div className="container  mb-5 mt-4">
-                    <div className="mt-4 mb-4 d-md-none ">
-                        <h1>Welcome {props.userName}!</h1>
-                    </div>
-                    <h2>Most popular</h2>
-                    <div className="row mt-3 mb-5 p-2 mx-auto ">
-                        {popularList}
-                    </div>
-                    <h2>Cheapest</h2>
-                    <div className="row mt-3 mb-5 ">
-                        {cheapestList}
-                    </div>
-                    <h2>Quickest</h2>
-                    <div className="row mt-3 mb-5  p-3">
-                        {quickestList}
-                    </div>         
-                </div>
+            <div>
+                <p>{props.populars.errMess}</p>
             </div>
-         
-        )
+        );
+    }   
+    return (
+        <div>         
+            <div className="container  mb-5 mt-4">
+                <div className="mt-4 mb-4 d-md-none ">
+                    <h1>Welcome {props.userName}!</h1>
+                </div>
+                <div className="mb-5">
+                    <h5>Welcome to Food-Run</h5>
+                    <h6>Get your weekly grocery list from your favorite meals!</h6>
+                </div>
+                <h5>Most popular</h5>
+                <div className="row mt-3 mb-5 p-2 mx-auto ">
+                    {props.populars.populars.populars.map(popular => {
+                        return (
+                            <Popular popular={popular}/>
+                        )
+                    })}
+                </div>      
+            </div>
+        </div>
+        
+    )
+     
 }
 
-    
-        
-            
-    
-
-
-
-
-export default Home
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

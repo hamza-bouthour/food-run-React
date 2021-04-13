@@ -1,31 +1,18 @@
 
-/* h1, h2, h3, h4, h5, h6 {
-  color: white  !important;
-} */
 .jumbotron-1 {
-
-  /* height: 500px; */
   margin: 0;
   font-family: "Hind Siliguri", sans-serif;
   padding: 0;
   padding-bottom: 0;
-  /* background-image: url(https://i.postimg.cc/3xC4PKMt/jumbotron-image3.jpg);
-  background-size: cover;
-  background-repeat: no-repeat; */
-  /* background: #000428;  
-  background: -webkit-linear-gradient(to right, #004e92, #000428); 
-  background: linear-gradient(to right, #004e92, #000428);  */
-  /* background: #00B4DB; 
-  background: -webkit-linear-gradient(to right, #0083B0, #00B4DB);  
-  background: linear-gradient(to right, #0083B0, #00B4DB);  */
   background-image: linear-gradient(to bottom, #1cb5e0, #119fc3, #0889a7, #03748d, #016073);
-  
-  
-  
-  
-  
-  
+}
+.popular-media:hover {
 
+  border: solid 1px gray;
+  opacity: 0.8;
+}
+.link-to-cart:hover {
+  text-decoration: none;
 }
 .custom-font {
   font-family: "Hind Siliguri", sans-serif;
@@ -36,27 +23,21 @@ h1{
 .signin-button {
   font-size: 5px;
 }
-/* .btn-signup {
-  background-color: #0202aa;
-  color: white; } */
-
-/* .btn-signin {
-  background-color: #000046; } */
-
 .btn-signin:hover {
   background-color: #1CB5E0; }
 
 .btn-signup:hover {
   background-color: #1CB5E0;
   color: white; }
-  .no-margin {
-    margin: 0; }
-  
-  .add-margin-top {
-    margin-top: 200px; }
-  
-  .add-margin-bot {
-    margin-bottom: 100px; }
+.no-margin {
+  margin: 0; 
+} 
+.add-margin-top {
+  margin-top: 200px; 
+}
+.add-margin-bot {
+  margin-bottom: 100px; 
+}
 .input-style {
   height: 50px;
 }
@@ -68,8 +49,8 @@ h1{
   content: "";
   background: no-repeat center center;
   background-size: 100% 100%;
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='white' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e"); }
-
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='white' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e"); 
+}
 .custom-navbar-toggler {
   margin-left: -15;
   border: 1px solid white; }
@@ -82,10 +63,7 @@ h1{
 }
 .site-footer {
   background-image: linear-gradient(to bottom, #1cb5e0, #119fc3, #0889a7, #03748d, #016073);
-  
-  margin-top: 205px;
-
-  
+  margin-top: 205px; 
 }
 .card-text {
   color: #1CB5E0;
@@ -93,14 +71,6 @@ h1{
 div.card-popular:hover { 
   border: solid 1px #1CB5E0 !important;
 }
-/* .card-popular {
-  border: 1px solid white !important;
-} */
-/* .footerStabilizer{
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-} */
 ol {
   background-color: white !important;
 }
@@ -109,14 +79,10 @@ ol {
   background: none;
   color: #0453ff;
 }
-/* .container-dish {
-  background: rgb(250, 177, 177);
-} */
 .product-button-add {
   background-color: red;
 }
 .container-contour {
-  
   background: #141E30;  /* fallback for old browsers */
   background: -webkit-linear-gradient(to right, #243B55, #141E30);  /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to right, #243B55, #141E30); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
@@ -137,13 +103,10 @@ ol {
   height: 100%;
   background-color: black;
   color: white;
-  
- }
- 
- .modal-dialog {
+}
+.modal-dialog {
   background-color: black;
 }
-
 .modal-content {
  background-color: black;
 }
@@ -151,16 +114,13 @@ ol {
   opacity: 0;
   transform: translateX(-100%);
 }
-
 .page-enter-active {
   opacity: 1;
   transition: 300ms ease-out;
 }
-
 .page-exit {
   opacity: 1;
 }
-
 .page-enter-active {
   opacity: 1;
   transform: translateX(0%);

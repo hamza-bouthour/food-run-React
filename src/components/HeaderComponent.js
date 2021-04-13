@@ -42,9 +42,6 @@ class Header extends Component {
                     <div className="container">
                         <div className="row mb-5">
                             
-                                {/* <Link to='/account' className="col-3 p-0">
-                                    <button class="btn" data-target="#signupModal" data-toggle="modal" style={{fontSize: "13px"}}>Sign-up</button>
-                                </Link> */}
                           
                             
                                 <button  onClick={this.toggleModal} class="btn-signin btn text-white col-3 offset-9 col-md-1 offset-md-11" data-target="#signinModal" data-toggle="modal" style={{fontSize: "13px"}}><i className="far fa-user fa-1"></i> Sign-in</button>
@@ -146,12 +143,12 @@ class Header extends Component {
                                                  Home
                                             </NavLink>
                                         </Link>
-                                            
+                            
                                         </NavItem>
                                         <NavItem className="mr-2">
                                             <NavLink className="nav-link" to="/cart" >
                                                  Cart
-                                                 <span>({this.props.cartItems})</span>
+                                                 <span>({})</span>
                                             </NavLink>
                                         </NavItem>
                                         <NavItem className="mr-2">
@@ -168,7 +165,7 @@ class Header extends Component {
                                         </NavItem>
                                         <NavItem className="mr-2 offset-10 text-white my-auto d-none d-md-block col-4">
                                             
-                                                 Welcome{' '}{this.props.userName}! 
+                                                 Welcome{' '}{}! 
                                        
                                         </NavItem>
                                     </Nav>

@@ -1,121 +1,186 @@
-import React, { Component } from 'react';
-import {
-    Card, CardImg, CardText, CardBody,Breadcrumb, BreadcrumbItem,
-    CardTitle, Button } from 'reactstrap';
-
-
-import { NavLink, Link } from 'react-router-dom';
+import React from 'react';
+import { Card, CardImg, CardText, CardBody,Breadcrumb, BreadcrumbItem, CardTitle, Button } from 'reactstrap';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import Youtube from './YoutubeComponent'
+import Loading  from './LoadingComponent';
+import {  addProductToCart, addProductToTotal, removeProductFromCart } from '../redux/ActionCreators'
 
-function DishInfo(props) { 
-    
 
-   
-    
-    if (props.popular) {
-        // <Cart popular= {props.popular} />
-        const dishProduct = 
-            props.popular.productsId.map((pro, i) => {
-                // console.log(pro)
-                return (
-                    <>
-                        <Card key={pro.name} className="col-md-3 card-popular col-4 p-1 my-md-3">
-                            <CardImg top width="100%" src={pro.img} alt="Card image cap" />
-                            <CardBody  className="p-0 p-2">
-                                <CardTitle tag="h5" className="m-0">{pro.name}</CardTitle>
-                                {/* <CardText><small>Cooking: </small><span className="text-success"><b>{props.popular.time}</b><i className="far fa-clock"></i></span></CardText> */}
-                                <CardText className="m-0"><small>Cost: </small><span className="text-success"><b>{pro.price}</b><i className="fas fa-dollar-sign"></i></span></CardText>
-                            </CardBody>
-                                <Button value={pro.id} className="btn" style={{background: "lightseagreen"}} onClick={props.onclick}>Add</Button>
-                        </Card>
-                    </>   
-                )
-            })
-           
-        const dishDirections = props.popular.directions.map(dir => {
+
+const mapDispatchToProps = {
+    addProductToCart,
+    addProductToTotal,
+    removeProductFromCart
+};
+const mapStateToProps = (populars, products, cart) => {
+    return {
+        populars,
+        products,
+        cart
+    };
+};
+// orange: #E78200
+// blue: #039FB6
+// darkblue: #3b4e76
+const RenderProduct = (props) => {
+    const {add, remove, productInCart, product} = props
+    return (
+        <div>
+            <Card key={product.name}  style={{border: productInCart ? 'solid 2px #E78200' : 'solid 1px gray', borderRadius: 5, padding: 5,marginTop: 10}}>
+                <CardImg right width="100%" src={product.img} alt="Card image cap" style={{width: '100%', height: 140, opacity: productInCart ? 0.6: 1}}/>
+                <CardBody  className="m-0 p-2" style={{opacity: productInCart ? 0.6: 1}}>
+                    <CardTitle tag="p" className="m-0">{product.name}</CardTitle>
+                    <CardText className="m-0 p-1"><span className="text-success"><b style={{color: '#3b4e76'}}>{product.price}</b><i className="fas fa-dollar-sign" style={{color: 'green'}}></i></span></CardText>
+                </CardBody>
+                <div style={{display: 'flex', justifyContent: 'flex-start', flexDirection: 'row', backgroundColor: '#fff',paddingTop: 5,}}>
+                    <Button 
+                        disabled={productInCart? true : false}
+                        style={{background: 'none', border: 'none'}}
+                        onClick={add}
+                    >
+                        <i className="fas fa-1x fa-pen-alt" 
+                            
+                            style={{color: '#039FB6'}}
+                        />
+                    </Button>
+                    <Button
+                        disabled={productInCart? false : true}
+                        style={{background: 'none', border: 'none'}}
+                        onClick={remove}
+                    >
+                        <i 
+                            className="fas fa-1x fa-minus-square" 
+                            style={{color: productInCart ? 'red': '#3b4e76'}}
+                        />
+                    </Button>
+                    <Button
+                        disabled={productInCart? false : true}
+                        style={{background: 'none', border: 'none'}}
+                        onClick={remove}
+                        className="offset-2"
+                    >
+                        <i 
+                            className="far fa-1x fa-star" 
+                            style={{color: 'pink'}}
+                        />
+                    </Button>
+                </div>    
+            </Card>
+        </div>   
+    ) 
+}
+
+ const RenderDirections = (props) => {
+    if (props.isLoading) {
+        return <Loading />
+    }
+    return (
+        props.directions.map(dir => {
             return (
-                <h6 className="p-3">{dir}</h6>
+                <div>
+                    <h5>{dir}</h5>
+                </div>
             )
         })
-        
-        return (           
-            <div key={props.popular.id} className="container">
-             <div className="row">
+    )
+}
+
+ const RenderDish = (props) => {
+    const {popular} = props;
+
+    return (
+        <div className="row mt-4">
+            <img className="col-md-6 col-12" src={popular.img} alt="Card image cap" />
+            <div className="col-md-6 col-12 row mx-auto">
+                <div className="col-12">
+                    <h1>{popular.name}</h1>
+                    <div>
+                        <small>Cooking: </small><span className="text-success"><b>{popular.time}</b><i className="far fa-clock mr-md-4"></i></span>{' '}
+                        <small>Cost: </small><span className="text-success"><b>{popular.cost}</b><i className="fas fa-dollar-sign"></i></span>
+                    </div>
+                </div>
+                <div className="row col-12 mt-3 mx-0">
+                    <h4 className="col-12">{popular.description}</h4>
+                </div>         
+            </div>
+        </div>
+    )
+}
+
+function DishInfo(props) {
+    const {popular} = props;
+    const list = props.populars.products.products.filter(product => product.dishId.includes(popular.id))
+    const cart = props.populars.cart.products
+    const directions = props.popular.directions
+
+const productAdd = (id
+    ) => {
+    props.addProductToCart(id)
+    props.addProductToTotal(props.populars.products.products.filter(x=> x.productId === id)[0].price)
+}
+const productRemove = (id) => {
+    props.removeProductFromCart(id, props.populars.products.products.filter(x=> x.productId === id)[0].price )
+   
+}  
+    return (  
+        <div className="container">
+            <div className="row">
                 <div className="col" >
                     <Breadcrumb>
                     <BreadcrumbItem><Link to="/home"><img src="https://i.postimg.cc/9fyPp0H1/aaaaa.png" style={{width: "30px"}}></img></Link></BreadcrumbItem>
-                        <BreadcrumbItem active>{props.popular.name}</BreadcrumbItem>
+                        <BreadcrumbItem active>{popular.name}</BreadcrumbItem>
                     </Breadcrumb>
                     <hr />
                 </div>
             </div>
-                <div className="row mt-4">
-                    <img className="col-md-6 col-12" src={props.popular.img} alt="Card image cap" />
-                    <div className="col-md-6 col-12 row mx-auto">
-                        <div className="col-12">
-                            <h1>{props.popular.name}</h1>
-                            <div>
-                                <small>Cooking: </small><span className="text-success"><b>{props.popular.time}</b><i className="far fa-clock mr-md-4"></i></span>{' '}
-                                <small>Cost: </small><span className="text-success"><b>{props.popular.cost}</b><i className="fas fa-dollar-sign"></i></span>
-                            </div>
-                        </div>
-
-                        <div className="row col-12 mt-3 mx-0">
-                            <h4 className="col-12">{props.popular.description}</h4>
-                            <div className="row mt-1 p-3">
-                                <div className="col">
-                                    <Link to='/cordon' style={{color: "#1CB5E0"}}>Cordon bleu</Link>
-                                </div>
-                                <div className="col">
-                                    <Link to='/salmon' style={{color: "#1CB5E0"}}>Baked salmon</Link>
-                                </div>
-                                <div className="col">
-                                    <Link to='/spaghetti' style={{color: "#1CB5E0"}}>Spaghetti Carbonara</Link>
-                                </div>
-                            </div>
-                            <Link to="/cart" className="mt-3 col-12">
-                                <div className="row col-4 p-2">   
-                                    <img src="https://i.postimg.cc/qRsTwppM/shopping-bag.gif" style={{width: '50px'}} className="mx-0"></img>
-                                    <h4 style={{color: "green"}} className="my-auto col-4" style={{marginLeft: "-10px",color: "green"}}>{props.cartItems}</h4>
-                                </div>
-                            </Link> 
-                        </div>
-                            
-                        
-                    </div>
-                </div>
+            <div className="row">
+                <RenderDish 
+                    popular={popular} 
+                    isLoading={props.populars.products.isLoading}   
+                />
                 <hr />
-                <div className="row">
-                    <div className="containter col-md-6 p-4">
-                        <div className="row">
-                            <h2>What you need</h2>
-                        </div>
-                        <div className="row">
-                            {dishProduct}
-                        </div>
+            </div> 
+            <div className="row">
+                <div className="col-6 row">
+                    <div className="col-12" style={{display: 'flex', justifyContent: 'space-between', flexDirection: 'row'}}>
+                        <h4 >Items</h4> 
+                        <Link to="/cart" className="link-to-cart">
+                            <div style={{display: 'flex', justifyContent: 'flex-start', flexDirection: 'row'}}>   
+                                <i className="fas fa-2x fa-clipboard-list " style={{color: '#3b4e76'}}></i>
+                                <h6 className="my-auto ml-1" >{cart.length}</h6>
+                                <i className="fas fa-2x fa-wallet my-auto ml-4" style={{color: '#3b4e76'}}></i>
+                                <h6 className="my-auto ml-1" >{props.populars.cart.total}<i className="fas  fa-dollar-sign" style={{color: '#E78200'}}></i></h6>
+                            </div>
+                        </Link> 
                     </div>
-                    <div className="containter col-md-6 p-4">
-                        <div className="row">
-                            <h2>Directions</h2>
-                        </div>
-                        <div className="pt-3 row">
-                        <div className="col-12">
-
-                            <Youtube query={props.popular.name} video={props.popular.video}/>
-                        </div>
-                            
-                        </div>
-                        <div className="row p-4">
-                            {dishDirections}
-                            
-                        </div>
-                    </div>
-                        
-
+                    {list.map((product, i) => {
+                        return (
+                            <div className="col-4">
+                                    <RenderProduct 
+                                    productInCart={props.populars.cart.products.includes(product.productId)} 
+                                    isLoading={props.populars.products.isLoading}
+                                    add={() => productAdd(product.productId)}
+                                    remove={() => productRemove(product.productId)}
+                                    product={product}
+                                />
+                            </div>
+                        )
+                    })} 
                 </div>
-            </div>   
-        )    
-    }
-    console.log('nope')
+                <div className="col-6">
+                        <h2>Directions</h2>
+                        <Youtube query={popular.name} video={popular.video} isLoading={props.populars.products.isLoading}/>
+                    <div className=" mt-0">
+                        <RenderDirections 
+                            directions={directions} 
+                            isLoading={props.populars.products.isLoading} 
+                        />
+                    </div>
+                </div>
+            </div>
+        </div>              
+    )    
 }
-export default DishInfo;
+
+export default connect(mapStateToProps, mapDispatchToProps)(DishInfo);

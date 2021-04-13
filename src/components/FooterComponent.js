@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 
-function Footer(props) {
+function Footer() {
     return (
         <footer className="site-footer text-white">
             <div className="container">

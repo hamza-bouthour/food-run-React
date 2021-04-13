@@ -1,44 +1,109 @@
 import * as ActionTypes from './ActionTypes';
+import { POPULARS } from '../shared/popular';
+import { PRODUCTS } from '../shared/products'
 
-function removeItem(event, data) {
 
-    for (let i=0; i<data.length; i++) {
-        if (data[i] === event.target.value) {
-            console.log(data.splice(i, 1))
-            console.log(data)
-            return data
-        }
-    }
+// POPULAR DISHES ACTIONS
+export const fetchPopulars = () => dispatch => {
+    console.log('action called')
+    dispatch(popularsLoading())
+    setTimeout(() => {
+        dispatch(addPopulars(POPULARS))
+    }, 1000);
 }
-export const addProduct = (product) => ({
-    type: ActionTypes.ADD_PRODUCT,
-    payload: product
+export const popularsLoading = () => ({
+    type: ActionTypes.POPULARS_LOADING
+});
+
+export const popularsFailed = errMess => ({
+    type: ActionTypes.POPULARS_FAILED,
+    payload: errMess
+});
+
+export const addPopulars = populars => ({
+    type: ActionTypes.ADD_POPULARS,
+    payload: populars
+});
+
+// PRODUCTS ACTIONS
+export const fetchProducts = () => dispatch => {
+    dispatch(productsLoading())
+    setTimeout(() => {
+        dispatch(addProducts(PRODUCTS))
+    }, 1000);
+        
+    
+}
+export const productsLoading = () => ({
+    type: ActionTypes.PRODUCTS_LOADING
+});
+
+export const productsFailed = errMess => ({
+    type: ActionTypes.PRODUCTS_FAILED,
+    payload: errMess
+});
+
+export const addProducts = products => ({
+    type: ActionTypes.ADD_PRODUCTS,
+    payload: products
+});
+
+// CART ACTIONS
+
+export const addProductToCart = (productId) => ({
+    type:ActionTypes.ADD_PRODUCT_TO_CART,
+    payload: 
+        productId
+    
+})
+export const addProductToTotal = (productPrice) => ({
+    type:ActionTypes.ADD_PRODUCT_COST_TO_TOTAL,
+    payload: 
+        productPrice
+    
+})
+export const removeProductFromCart = (productId, price) => ({
+    type: ActionTypes.REMOVE_PRODUCT_FROM_CART,
+    payload: 
+        {
+            productId: productId,
+            price: price
+        }
+    
+})
+export const removeAllProductsFromCart = () => ({
+    type: ActionTypes.REMOVE_ALL_PRODUCTS_FROM_CART 
 })
 
-export const addProductNumber = () => ({
-    type: ActionTypes.ADD_PRODUCT_NUMBER
+export const markFavorite = (dishPopularId) => ({
+    type: ActionTypes.MARK_FAVORITE,
+    payload: dishPopularId
 })
-export const removeProduct = (event, product) => ({
-    type: ActionTypes.REMOVE_PRODUCT,
-    payload: {
-        cartProducts: removeItem(event, product)
-    }
-})
-export const removeAllProducts = () => ({
-    type: ActionTypes.REMOVE_ALL_PRODUCTS,
-    // payload: {
-    //     cartProducts: [],
-    //     cartItems: product
-    // }
+export const unMarkFavorite = (dishPopularId) => ({
+    type: ActionTypes.UNMARK_FAVORITE,
+    payload: dishPopularId
 })
 
-export const addAccount = (firstName, lastName, email, password) => ({
+export const addDishToCart = (dishId) => ({
+    type: ActionTypes.ADD_DISH_TO_CART,
+    payload: dishId
+})
+
+export const addAccount = (userName, email, password, subscribed) => ({
     type: ActionTypes.ADD_ACCOUNT,
     payload: {
-        firstName: firstName,
-        lastName: lastName,
-        email: email,
-        password: password
-
+        userName,
+        email,
+        password,
+        subscribed
     }
 })
+export const addProductToFavorite = (productId) => ({
+    type: ActionTypes.ADD_PRODUCT_TO_FAVORITE,
+    payload: productId
+})
+export const removeProductFromFavorite = (productId) => ({
+    type: ActionTypes.REMOVE_PRODUCT_FROM_FAVORITE,
+    payload: productId
+})
+

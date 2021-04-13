@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
-import { Media } from 'reactstrap'
 import ReactPlayer from 'react-player'
-// import {
-//     Card, CardText, CardBody, CardLink,
-//     CardTitle, CardSubtitle, Media
-//   } from 'reactstrap';
+import Loading  from './LoadingComponent';
 
 
 class YoutubeRow extends Component {
@@ -18,12 +14,6 @@ class YoutubeRow extends Component {
                 videoId:   'tAGnKpE4NCI'
         }
     }
-    // async getKeyword(newWord) {
-    //     console.log(newWord);
-    // this.setState({q: newWord},
-    //     () => {this.fetchUrl(this.state.q)}
-    //     )
-    // }
     getQuery(queries) {
         const queryKey = Object.keys(queries).map(key => `${encodeURIComponent(key)}=${encodeURIComponent(queries[key])}`)
         return queryKey.join('&');
@@ -33,10 +23,7 @@ class YoutubeRow extends Component {
             () => {this.fetchUrl(this.state.q)}
             )
     }
-    // componentDidUpdate() {
-    //     this.setState({videoId: response.items[1].id.videoId})
-    // }
-    
+   
     async fetchUrl(keyword) {
         if (keyword) {
             const uri = this.getQuery(this.state)
@@ -55,26 +42,18 @@ class YoutubeRow extends Component {
     }
    render() {
     const videoUriX = 'https://www.youtube.com/embed/';
+    if (this.props.isLoading) {
+        return <Loading />
+    }
     return (
-        // <div className="container mx-auto p-0 col-12">
-            
-                <div className="row  mx-auto mb-3">
-                    <div className="col-12 m-0 p-0">
-                    <ReactPlayer className="mw-100" url={this.props.video} />
-                        {/* <Media><iframe src={videoUriX + this.state.videoId}/></Media> */}
-                        {/* <Media><iframe src='https://www.youtube.com/embed/tAGnKpE4NCI'/></Media> */}
-                    </div>
-                    {/* <div className="col-12 col-md-3 description-video-box m-0">
-                        <p className="video-description">{this.props.data.artist}</p>
-                        <p className="video-description">{this.props.data.song}</p>
-                        <p className="video-description">Album</p>
-                        <p className="video-description">3:57</p>
-                        <a className="youtube-link">Watch on Youtube</a>
-                    </div>   */}
-                </div> 
-         
-       
-    )     
+            <div className="row  mx-auto mb-3">
+                <div className="col-12 m-0 p-0">
+                <ReactPlayer className="mw-100" url={this.props.video} />
+                    {/* <Media><iframe src={videoUriX + this.state.videoId}/></Media> */}
+                    {/* <Media><iframe src='https://www.youtube.com/embed/tAGnKpE4NCI'/></Media> */}
+                </div>
+            </div> 
+        )     
     }       
 }             
 export default YoutubeRow;
